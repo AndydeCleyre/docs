@@ -20,6 +20,7 @@ jobs:
         run: |
           rm -rf docs
           sphinx-build . docs
+          touch docs/.nojekyll
       - name: Commit and push the rebuilt docs
         run: |
           git config --local user.email "action@github.com"
