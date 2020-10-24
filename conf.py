@@ -104,6 +104,7 @@ html_theme_options = {
 }
 
 html_logo = 'img/dash_logo_white.png'
+html_favicon = 'img/favicon-32x32.ico'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
