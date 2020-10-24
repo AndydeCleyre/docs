@@ -1,6 +1,7 @@
 # Dash Docs
 
-[![Build status](https://img.shields.io/readthedocs/dash-docs/stable)](https://readthedocs.org/projects/dash-docs/builds/)
+[![ReadTheDocs build status](https://img.shields.io/readthedocs/dash-docs/stable)](https://readthedocs.org/projects/dash-docs/builds/)
+[![GitHub Pages build status](https://img.shields.io/github/workflow/status/dashpay/docs/Build%20and%20publish%20to%20github%20pages)](https://github.com/dashpay/docs/actions)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen)](https://github.com/RichardLitt/standard-readme)
 
 Dash User Documentation

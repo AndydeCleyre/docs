@@ -1,0 +1,31 @@
+name: Build and publish to github pages
+on:
+  push:
+    branches:
+      - feature/gh-pages-build
+      # - 0.16.0
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install python reqs
+        run: |
+          python -m pip install -U pip
+          pip install -Ur requirements.txt
+      - name: Rebuild docs
+        run: |
+          rm -rf docs
+          sphinx-build . docs
+      - name: Commit and push the rebuilt docs
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          if ! git diff --quiet; then
+            git add docs
+            git commit -m "Automated gh-pages rebuild"
+            git push
+          fi

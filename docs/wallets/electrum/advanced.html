@@ -1,0 +1,1655 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="Masternodes, multisig, sweeping paper wallets, cold storage and command line in the Dash Electrum wallet." name="description" />
+<meta content="dash, wallet, electrum, masternode, multisig, paper, cold storage, command line" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced functions &mdash; Dash latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/lang.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installation" href="../android/installation.html" />
+    <link rel="prev" title="Frequently Asked Questions" href="faq.html" />
+    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+    <meta name="google-site-verification" content="JVzTMPjsCY-U-SaJERGf-eviRxXUPfFkPFdiF_MINCU" />
+    <meta name="author" content="Dash Core Group, Inc." />
+    <meta name="copyright" content="© Copyright 2019 Dash Core Group, Inc." />
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "Organization",
+			"url": "https://www.dash.org",
+			"mainEntityOfPage": {
+				"@type": "WebPage",
+				"@id": "https://docs.dash.org"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Dash Core Group, Inc.",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https://docs.dash.org/en/stable/_images/dash_logo.png",
+					"width": 1446,
+					"height": 424
+				}
+			}
+		}
+	</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/dash_logo_white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">First Steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/about.html">What is Dash?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/about.html#dash-videos">Dash Videos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/about.html#id1">What is Dash?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/about.html#dash-school">Dash School</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/about.html#dash-101">Dash 101</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/about.html#whitepaper">Whitepaper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/about.html#roadmap">Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/features.html">Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#specifications">Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#masternodes">Masternodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#privatesend">PrivateSend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#instantsend">InstantSend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#chainlocks">ChainLocks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/features.html#chainlocks-process-overview">ChainLocks Process Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#sporks">Sporks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#x11-hash-algorithm">X11 Hash Algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/features.html#advantages-of-x11">Advantages of X11</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#dark-gravity-wave">Dark Gravity Wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#emission-rate">Emission Rate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/features.html#total-coin-emission">Total coin emission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/features.html#block-reward-allocation">Block reward allocation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#decentralized-governance">Decentralized Governance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#sentinel">Sentinel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#fees">Fees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#evolution">Evolution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/features.html#evolution-previews">Evolution Previews</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/how-to-buy.html">How To Buy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/how-to-buy.html#marketplace-comparison-websites">Marketplace comparison websites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/how-to-buy.html#atms">ATMs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/safety.html">Safety</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/safety.html#impersonation">Impersonation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/safety.html#scams">Scams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/safety.html#ponzi-schemes">Ponzi Schemes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/information.html">Links and Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/information.html#links">Links</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#official-sites">Official sites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#community-sites">Community sites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#forums">Forums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#chat">Chat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#social-media">Social media</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#facebook">Facebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#twitter">Twitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#news">News</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#blogs">Blogs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#wikipedia">Wikipedia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#inactive">Inactive</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/information.html#tools">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#block-explorers-statistics-and-visualizations">Block explorers, statistics and visualizations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#treasury-tools">Treasury tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#masternode-management">Masternode management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#price-monitoring-and-statistics">Price monitoring and statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#dash-community-project">Dash Community project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#darknet-pages">DarkNet pages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/information.html#mobile-apps">Mobile Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#ios">iOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#android">Android</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/information.html#glossary">Glossary</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Wallets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dash-core-wallet">Dash Core Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dashcore/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/installation-linux.html">Linux Installation Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/installation-macos.html">macOS Installation Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/installation-windows.html">Windows Installation Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dashcore/interface.html">Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/interface.html#the-main-window">The Main Window</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/interface.html#the-options-dialog">The Options Dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/interface.html#the-tools-dialog">The Tools Dialog</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dashcore/send-receive.html">Sending and receiving</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/send-receive.html#sending-dash">Sending Dash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/send-receive.html#receiving-dash">Receiving Dash</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dashcore/privatesend-instantsend.html">PrivateSend and InstantSend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/privatesend-instantsend.html#privatesend">PrivateSend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/privatesend-instantsend.html#instantsend">InstantSend</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dashcore/backup.html">Wallet backup and restore</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/backup.html#backup">Backup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/backup.html#restore">Restore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/backup.html#backup-storage-considerations">Backup storage considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/backup.html#verifying-backups">Verifying backups</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dashcore/cmd-rpc.html">Arguments and commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/cmd-rpc.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/cmd-rpc.html#rpc-commands">RPC commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dashcore/advanced.html">Advanced topics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/advanced.html#coin-control">Coin Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/advanced.html#hd-wallets">HD Wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/advanced.html#multisignature">Multisignature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/advanced.html#daemon">Daemon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/advanced.html#tor">Tor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/advanced.html#multiple-wallets">Multiple wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dashcore/advanced.html#keepass">KeePass</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#dash-electrum-wallet">Dash Electrum Wallet</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#download">Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#creating-a-new-wallet">Creating a New Wallet</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="send-receive.html">Sending and receiving</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="send-receive.html#sending">Sending</a></li>
+<li class="toctree-l4"><a class="reference internal" href="send-receive.html#receiving">Receiving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="send-receive.html#monitoring-transactions">Monitoring transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">Wallet security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="security.html#change-password">Change password</a></li>
+<li class="toctree-l4"><a class="reference internal" href="security.html#backup">Backup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="security.html#restore">Restore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="faq.html">Frequently Asked Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#how-does-dash-electrum-work">How does Dash Electrum work?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#does-dash-electrum-trust-servers">Does Dash Electrum trust servers?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#what-is-the-seed">What is the Seed?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#how-secure-is-the-seed">How secure is the seed?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#what-are-change-addresses">What are change addresses?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#how-can-i-send-the-maximum-available-in-my-wallet">How can I send the maximum available in my wallet?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#how-can-i-send-dash-without-paying-a-transaction-fee">How can I send Dash without paying a transaction fee?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#is-there-a-way-to-enter-amounts-in-usd-in-dash-electrum">Is there a way to enter amounts in USD in Dash Electrum?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#what-does-it-mean-to-freeze-an-address-in-dash-electrum">What does it mean to “Freeze” an address in Dash Electrum?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#how-is-the-wallet-encrypted">How is the wallet encrypted?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#i-have-forgotten-my-password-but-still-have-my-seed-is-there-any-way-i-can-recover-my-password">I have forgotten my password but still have my seed. Is there any way I can recover my password?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#does-dash-electrum-support-cold-wallets">Does Dash Electrum support cold wallets?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#can-i-import-private-keys-from-other-dash-clients">Can I import private keys from other Dash clients?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#can-i-sweep-private-keys-from-other-dash-clients">Can I sweep private keys from other Dash clients?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#where-is-my-wallet-file-located">Where is my wallet file located?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#can-i-do-bulk-payments-with-dash-electrum">Can I do bulk payments with Dash Electrum?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#can-dash-electrum-create-and-sign-raw-transactions">Can Dash Electrum create and sign raw transactions?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#dash-electrum-freezes-when-i-try-to-send-dash">Dash Electrum freezes when I try to send Dash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#what-is-the-gap-limit">What is the gap limit?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#how-can-i-pre-generate-new-addresses">How can I pre-generate new addresses?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="faq.html#how-to-upgrade-dash-electrum">How to upgrade Dash Electrum?</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Advanced functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#privatesend">PrivateSend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hardware-wallets">Hardware Wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#masternodes">Masternodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multisig-wallets">Multisig wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sweep-a-paper-wallet">Sweep a paper wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cold-storage">Cold storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#command-line">Command line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-cold-storage-with-the-command-line">Using cold storage with the command line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-accept-dash-on-a-website-using-dash-electrum">How to accept Dash on a website using Dash Electrum</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dash-android-wallet">Dash Android Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../android/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../android/installation.html#google-play">Google Play</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/installation.html#from-apk">From APK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/installation.html#from-source">From source</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../android/getting-started.html">Getting started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../android/getting-started.html#creating-a-new-wallet">Creating a new wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/getting-started.html#restoring-from-backup">Restoring from backup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/getting-started.html#receiving">Receiving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/getting-started.html#sending">Sending</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/getting-started.html#buying">Buying</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../android/advanced-functions.html">Advanced functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../android/advanced-functions.html#address-book">Address book</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/advanced-functions.html#exchange-rates">Exchange rates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/advanced-functions.html#sweep-paper-wallet">Sweep paper wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/advanced-functions.html#network-monitor">Network monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/advanced-functions.html#settings">Settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dash-ios-wallet">Dash iOS Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ios/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../ios/installation.html#app-store">App Store</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ios/installation.html#compiling-from-source">Compiling from source</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ios/getting-started.html">Getting started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../ios/getting-started.html#creating-a-new-wallet">Creating a new wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ios/getting-started.html#receiving">Receiving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ios/getting-started.html#sending">Sending</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ios/advanced-functions.html">Advanced functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../ios/advanced-functions.html#url-scheme">URL Scheme</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dash-paper-wallet">Dash Paper Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../paper.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../paper.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../paper.html#death-plan">Death plan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../paper.html#tools">Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../paper.html#address-generation">Address generation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../paper.html#encryption">Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../paper.html#sending-to-a-paper-wallet-and-viewing-the-balance">Sending to a paper wallet and viewing the balance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../paper.html#spending-from-a-paper-wallet">Spending from a paper wallet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../paper.html#optional-decrypt-bip38-key-to-wif">Optional: Decrypt BIP38 key to WIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../paper.html#importing-the-private-key-to-your-live-wallet">Importing the private key to your live wallet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#hardware-wallets">Hardware Wallets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hardware.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hardware.html#trezor">Trezor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../hardware.html#getting-started">Getting Started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hardware.html#receiving-dash">Receiving Dash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hardware.html#sending-dash">Sending Dash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hardware.html#advanced-functions">Advanced Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../hardware.html#keepkey">KeepKey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hardware.html#ledger">Ledger</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#third-party-wallets">Third Party Wallets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#abra">Abra</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#adamant">ADAMANT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id1">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id2">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#atomic-wallet">Atomic Wallet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id3">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id4">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#channels">Channels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id5">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id6">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#cobo">Cobo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id7">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id8">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#coinomi">Coinomi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#download">Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id9">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#cryptonator">Cryptonator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id10">Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id11">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#edge">Edge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id12">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id13">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#ethos">Ethos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id14">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id15">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#evercoin">Evercoin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id16">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id17">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#exodus">Exodus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id18">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id19">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#guarda">Guarda</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id20">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id21">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#huobi-wallet">Huobi Wallet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id23">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id24">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#jaxx">Jaxx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id25">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id26">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#kurepay">KurePay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id27">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id28">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#magnum">Magnum</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id29">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id30">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#mobi">Mobi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id31">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id32">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#ownbit">Ownbit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id33">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id34">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#paytomat">Paytomat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id35">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id36">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#spend">Spend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id37">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id38">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#trust">Trust</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id39">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id40">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#vegawallet">VegaWallet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id41">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id42">Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#web-wallets">Web Wallets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../web.html">MyDashWallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../web.html#magnum-wallet">Magnum Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../web.html#westwallet">WestWallet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#text-wallets">Text Wallets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../text.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text.html#dashtext">DashText</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../text.html#instructions">Instructions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#wallet-guides">Wallet Guides</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../recovery.html">Wallet Recovery</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../recovery.html#determining-the-backup-format">Determining the backup format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recovery.html#file-backups">File Backups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recovery.html#recovery-phrases">Recovery Phrases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recovery.html#private-keys">Private Keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recovery.html#forgotten-passwords">Forgotten Passwords</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../signing.html">Signing and Verifying Messages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../signing.html#signing-a-message">Signing a Message</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../signing.html#verifying-a-message">Verifying a Message</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../earning-spending.html">Earning and Spending</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../earning-spending.html#earning">Earning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../earning-spending.html#spending">Spending</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../earning-spending.html#merchant-directory">Merchant Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../earning-spending.html#debit-cards">Debit Cards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../earning-spending.html#tax">Tax</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Merchants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../merchants/getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/getting-started.html#payment-processors">Payment Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/getting-started.html#installation-examples">Installation Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../merchants/getting-started.html#woocommerce-and-gocoin">WooCommerce and GoCoin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../merchants/getting-started.html#woocommerce-and-coinpayments-net">WooCommerce and CoinPayments.net</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../merchants/getting-started.html#point-of-sale-with-anypay">Point-of-Sale with Anypay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../merchants/getting-started.html#point-of-sale-with-spark">Point-of-Sale with Spark</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../merchants/administrative.html">Administrative Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/administrative.html#onboarding-process">Onboarding Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/administrative.html#promoting-dash">Promoting Dash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/administrative.html#currency-conversion">Currency Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/administrative.html#legal-considerations">Legal considerations</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Network</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../governance/index.html">Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../governance/understanding.html">Understanding Dash Governance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#budgets-and-masternode-voting">Budgets and masternode voting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#reward-schedule">Reward schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#contractors-and-proposals">Contractors and proposals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#proposal-websites">Proposal websites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#budget-allocation">Budget allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#scaling-and-future-uses">Scaling and future uses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../governance/using.html">Using Dash Governance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/using.html#understanding-the-process">Understanding the process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#proposals">Proposals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#votes">Votes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#budgets">Budgets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#object-structure">Object structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#persistence">Persistence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#templates">Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/using.html#budget-cycles">Budget cycles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/using.html#creating-proposals">Creating proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#dash-budget-proposal-generator">Dash Budget Proposal Generator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#dashcentral-proposal-generator">DashCentral Proposal Generator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/using.html#voting-on-proposals">Voting on proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#dashcentral">DashCentral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#dash-masternode-tool-dmt">Dash Masternode Tool (DMT)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#dash-core-wallet-or-masternode">Dash Core wallet or masternode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#delegating-votes">Delegating votes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../governance/eight-steps.html">8 Steps to a Successful Proposal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../masternodes/index.html">Masternodes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../masternodes/understanding.html">Understanding Masternodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#dip003-masternode-changes">DIP003 Masternode Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#masternodes-vs-mining">Masternodes vs. mining</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#payment-logic">Payment logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#proof-of-service">Proof of Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#quorum-selection">Quorum selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#masternode-requirements">Masternode requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/understanding.html#dash-evolution">Dash Evolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../masternodes/hosting.html">Hosting Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/hosting.html#list-of-hosting-services">List of hosting services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#crowdnode">CrowdNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#allnodes">Allnodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#sid-hosting-service">SID Hosting Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#node40">Node40</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#pool-of-stake">Pool of Stake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#staked">Staked</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#nodehub-io">NodeHub.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#gentarium">Gentarium</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#penny-scavengers">Penny Scavengers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#masternodehosting">Masternodehosting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/hosting.html#registering-a-hosted-masternode">Registering a hosted masternode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/hosting.html#operator-transactions">Operator transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../masternodes/setup.html">Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#before-you-begin">Before you begin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#set-up-your-vps">Set up your VPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#set-up-your-operating-system">Set up your operating system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#send-the-collateral">Send the collateral</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/setup.html#option-1-sending-from-a-hardware-wallet">Option 1: Sending from a hardware wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/setup.html#option-2-sending-from-dash-core-wallet">Option 2: Sending from Dash Core wallet</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#install-dash-core">Install Dash Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/setup.html#manual-installation">Manual installation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#register-your-masternode">Register your masternode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/setup.html#option-1-registering-from-a-hardware-wallet">Option 1: Registering from a hardware wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/setup.html#option-2-registering-from-dash-core-wallet">Option 2: Registering from Dash Core wallet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../masternodes/maintenance.html">Maintenance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/maintenance.html#masternode-software-update">Masternode Software Update</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#manual-update">Manual update</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/maintenance.html#updating-masternode-information">Updating Masternode Information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#proupservtx">ProUpServTx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#proupregtx">ProUpRegTx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#prouprevtx">ProUpRevTx</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/maintenance.html#proof-of-service-bans">Proof of Service Bans</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/maintenance.html#dashcentral-voting-verification-and-monitoring">DashCentral voting, verification and monitoring</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#adding-your-masternode-to-dashcentral">Adding your masternode to DashCentral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#enabling-voting-from-dashcentral">Enabling voting from DashCentral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#verifying-ownership">Verifying ownership</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#installing-the-dashcentral-monitoring-script">Installing the DashCentral monitoring script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/maintenance.html#masternode-monitoring-tools">Masternode monitoring tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#block-explorers">Block Explorers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#dash-masternode-tool">Dash Masternode Tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#dash-ninja">DASH Ninja</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#id1">DashCentral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#masternode-me">Masternode.me</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#dash-masternode-information">Dash Masternode Information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../masternodes/advanced.html">Advanced Topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/advanced.html#installing-dash-on-fedora-linux">Installing Dash on Fedora Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/advanced.html#installing-dash-on-ubuntu-linux">Installing Dash on Ubuntu Linux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../mining/index.html">Mining</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mining/index.html#masternodes-vs-mining">Masternodes vs. Mining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mining/index.html#mining-pools">Mining Pools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/pools.html">Mining Pools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../mining/pools.html#miner-hosting">Miner Hosting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../mining/pools.html#setting-up-your-miner">Setting up your miner</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/p2pool.html">P2Pool Node Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../mining/p2pool.html#setting-up-the-host-server">Setting up the host server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../mining/p2pool.html#setting-up-port-forwarding">Setting up port forwarding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../mining/p2pool.html#manual-setup">Manual setup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../mining/index.html#cpu-mining">CPU Mining</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#mining-software">Mining software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../mining/index.html#gpu-mining">GPU Mining</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#id5">Mining software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#id6">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#id7">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../mining/index.html#asic-mining">ASIC Mining</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers/index.html">Developers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/integration.html">Integration Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#special-transactions">Special Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#instantsend">InstantSend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#receiving-instantsend-transactions">Receiving InstantSend Transactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#broadcasting-instantsend-transactions">Broadcasting InstantSend Transactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#api-services">API Services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#insight">Insight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#blockcypher">BlockCypher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#bitgo">BitGo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#chainrider">ChainRider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#blockmove">Blockmove</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#nownodes">NOWNodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#gocoin">GoCoin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#coinpayments">CoinPayments</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#sdk-resources">SDK Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#dash-developer-guide">Dash Developer Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#nodejs-javascript-dashcore">NodeJS/JavaScript: Dashcore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#nodejs-javascript-dashjs">NodeJS/JavaScript: DashJS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#php-bitcoin-php">PHP: Bitcoin-PHP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#python-pycoin">Python: PyCoin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#java-dashj">Java: DashJ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#objective-c-dash-sync">Objective-C: Dash-Sync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#net-nbitcoin">.NET: NBitcoin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#id3">BlockCypher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#id4">GoCoin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#vending-machines">Vending Machines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#price-tickers">Price Tickers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#qr-codes">QR Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/dip3-upgrade.html">Dash 0.13 Upgrade Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/dip3-upgrade.html#installation-notes">Installation notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/dip3-upgrade.html#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/dip3-upgrade.html#libraries-and-apis">Libraries and APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/dip8-upgrade.html">Dash 0.14 Upgrade Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/dip8-upgrade.html#installation-notes">Installation notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/dip8-upgrade.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/v016-upgrade.html">Dash 0.16 Upgrade Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/v016-upgrade.html#installation-notes">Installation notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/v016-upgrade.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/translating.html">Translating Dash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-core">Dash Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-docs">Dash Docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-graphics">Dash Graphics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-ios-wallet">Dash iOS Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-android-wallet">Dash Android Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-videos">Dash Videos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-website">Dash Website</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/compiling.html">Compiling Dash Core</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/compiling.html#gitian">Gitian</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/testnet.html">Testnet and devnets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#tools-and-links">Tools and links</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/testnet.html#faucets">Faucets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/testnet.html#explorers">Explorers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/testnet.html#pools">Pools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#masternodes">Masternodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-16-0">Testnet 0.16.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-15-0">Testnet 0.15.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-14-0">Testnet 0.14.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-13-0">Testnet 0.13.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-12-3">Testnet 0.12.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-12-2">Testnet 0.12.2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/insight.html">Insight API Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/index.html#sporks">Sporks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/index.html#spork-functions">Spork functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/index.html#viewing-spork-status">Viewing spork status</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/index.html#version-history">Version History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../marketing.html">Marketing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../marketing.html#design-materials">Design Materials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#brochures">Brochures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#flyers">Flyers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#handouts">Handouts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#infographics">Infographics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing.html#the-dash-difference">The Dash Difference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing.html#ten-misconceptions-about-dash">Ten Misconceptions About Dash</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#presentations">Presentations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing.html#dash-meetup">Dash Meetup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing.html#simple-presentation">Simple presentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing.html#dash-101-presentation">Dash 101 Presentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../marketing.html#business-templates">Business Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#document-templates">Document templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#presentation-templates">Presentation templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#cards">Cards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#fonts">Fonts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../legal.html">Legal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../legal.html#how-the-law-applies-to-dash">How the Law Applies to Dash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../legal.html#tax-treatment">Tax Treatment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../legal.html#block-rewards">Block rewards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../legal.html#dash-collateral">Dash Collateral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../legal.html#capital-gains">Capital Gains</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../legal.html#legal-liability">Legal Liability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../legal.html#primary-liability">Primary Liability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../legal.html#secondary-liability">Secondary Liability</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../legal.html#exchange-liability">Exchange Liability</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../legal.html#privatesend-legal-position">PrivateSend Legal Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../legal.html#atm-fiat-compliance">ATM &amp; Fiat Compliance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../legal.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../legal.html#dash-atm-compliance-program">Dash ATM Compliance Program</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Dash</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Wallets</a> &raquo;</li>
+        
+      <li>Advanced functions</li>
+    
+    
+	<select class="wy-breadcrumbs-aside" id="langselect">
+		<option value="de">Deutsch</option>
+		<option value="en" selected="selected">English</option>
+		<option value="es">Español</option>
+		<option value="fr">Français</option>
+		<option value="pt">Português</option>
+		<option value="tl">Tagalog</option>
+		<option value="vi">Tiếng Việt</option>
+		<option value="el">Ελληνικά</option>
+		<option value="ru">Русский</option>
+		<option value="ko">한국어</option>
+		<option value="ja">日本語</option>
+		<option value="zh_CN">简体中文</option>
+		<option value="zh_TW">繁体中文</option>
+		<option value="ar">العربية</option>
+	</select>
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="advanced-functions">
+<span id="electrum-advanced-functions"></span><h1>Advanced functions<a class="headerlink" href="#advanced-functions" title="Permalink to this headline">¶</a></h1>
+<p>Dash Electrum is based on <a class="reference external" href="https://electrum.org">Electrum</a>, a Bitcoin
+wallet. Most functions are identical, which means it is not necessary to
+reproduce the entirety of the Electrum documentation here. The following
+sections describe some frequently used advanced functions. For further
+details on other advanced functions in Electrum for both Bitcoin and
+Dash, please click the links below.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.electrum.org">Electrum documentation</a></p></li>
+<li><p><a class="reference external" href="https://docs.electrum.org/en/latest/seedphrase.html">Electrum seed version system</a></p></li>
+<li><p><a class="reference external" href="https://docs.electrum.org/en/latest/protocol.html">Electrum protocol specification</a></p></li>
+<li><p><a class="reference external" href="https://docs.electrum.org/en/latest/transactions.html">Serialization of unsigned or partially signed transactions</a></p></li>
+<li><p><a class="reference external" href="https://docs.electrum.org/en/latest/spv.html">Simple Payment Verification</a></p></li>
+<li><p><a class="reference external" href="https://docs.electrum.org/en/latest/console.html">The Python Console</a></p></li>
+<li><p><a class="reference external" href="https://docs.electrum.org/en/latest/tor.html">Using Electrum Through Tor</a></p></li>
+</ul>
+<div class="section" id="privatesend">
+<h2>PrivateSend<a class="headerlink" href="#privatesend" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../../introduction/features.html#privatesend"><span class="std std-ref">PrivateSend</span></a> offers users enhanced privacy when
+creating transactions by splitting the user’s balance into a number of
+predefined denominations in advance of spending. This process is known
+as mixing. PrivateSend is available in Dash Electrum versions 3.3.8.3
+and higher, with support for hardware wallets added in 3.3.8.7.</p>
+<div class="section" id="mixing-and-sending">
+<h3>Mixing and sending<a class="headerlink" href="#mixing-and-sending" title="Permalink to this headline">¶</a></h3>
+<p>To start mixing in Dash Electrum, select <strong>Wallet &gt; PrivateSend</strong> or
+click the <strong>PS</strong> icon in the lower right corner of the main window. The
+following window appears:</p>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="../../_images/ps-view.png"><img alt="../../_images/ps-view.png" src="../../_images/ps-view.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">PrivateSend dialog in Dash Electrum</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Enter the <strong>Amount of Dash to keep anonymized</strong> and the number of
+<strong>PrivateSend rounds to use</strong>. Then click <strong>Enable PrivateSend</strong>,
+followed by <strong>Start Mixing</strong>. The mixing process will begin, and the
+<strong>Mixing Progress</strong> bar shows the completion progress. Additional
+information on the process is available on the <strong>Info</strong> and <strong>Log</strong>
+tabs.</p>
+<p>When mixing is complete, simply check the <strong>PrivateSend</strong> checkbox on
+the <strong>Send</strong> tab before sending your transaction. Dash Electrum will
+only use Dash mixed according to your specifications for the
+transaction.</p>
+</div>
+</div>
+<div class="section" id="hardware-wallets">
+<h2>Hardware Wallets<a class="headerlink" href="#hardware-wallets" title="Permalink to this headline">¶</a></h2>
+<p>You can use hardware wallets with Dash Electrum. Under Linux, it may be
+necessary to first install dependencies and udev rules as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span> <span class="n">cython3</span> <span class="n">libusb</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">dev</span> <span class="n">libudev</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">sudo</span> <span class="n">pip3</span> <span class="n">install</span> <span class="n">trezor</span>
+</pre></div>
+</div>
+<p>PrivateSend mixing is also supported. Starting PrivateSend mixing in
+Dash Electrum with a hardware wallet will generate a new HD wallet and
+mnemonic for the PrivateSend keystore. A transaction from the hardware
+wallet to an address in this keystore will be created, and mixing will
+begin. You can then spend the mixed Dash, or send it back to your
+hardware wallet.</p>
+</div>
+<div class="section" id="masternodes">
+<h2>Masternodes<a class="headerlink" href="#masternodes" title="Permalink to this headline">¶</a></h2>
+<p>Dash Electrum supports masternode creation through an interface called
+the <strong>Masternode Manager</strong>. The functionality is available starting from
+the protocol version 70201.</p>
+<div class="section" id="masternode-manager">
+<h3>Masternode Manager<a class="headerlink" href="#masternode-manager" title="Permalink to this headline">¶</a></h3>
+<p>The Masternode Manager can be accessed either from the <strong>Wallet &gt;
+Masternodes</strong> menu or by pressing <strong>Ctrl+M</strong>. This manager displays the
+status of your masternode(s). A wallet with no masternodes will begin
+with a default masternode for which you can fill in the necessary
+information.</p>
+<p>The manager displays the following data about each masternode you have
+set up:</p>
+<ul class="simple">
+<li><p>The alias (name) of the masternode.</p></li>
+<li><p>The status of the masternode (e.g. whether it has been activated).</p></li>
+<li><p>The collateral payment of the masternode.</p></li>
+<li><p>The private delegate key.</p></li>
+<li><p>The IP address and port that your masternode can be reached at.</p></li>
+<li><p>The protocol version that your masternode supports.</p></li>
+</ul>
+</div>
+<div class="section" id="masternode-setup">
+<h3>Masternode setup<a class="headerlink" href="#masternode-setup" title="Permalink to this headline">¶</a></h3>
+<p>A masternode requires a “delegate” key, which is known to both Dash
+Electrum and your masternode. Your masternode will use this key to sign
+messages, and the Dash network will know that you authorized it to. A
+delegate key can either be one of your Dash Electrum keys, or an
+imported key. Either way, your masternode and Dash Electrum will both
+need to know the private key.</p>
+<p>To use one of your Dash Electrum keys as a delegate key, put its private
+key in the <strong>Masternode Private Key</strong> field of the <strong>View Masternode</strong>
+tab.</p>
+</div>
+<div class="section" id="ip-address-and-protocol-version">
+<h3>IP address and protocol version<a class="headerlink" href="#ip-address-and-protocol-version" title="Permalink to this headline">¶</a></h3>
+<p>Certain information about your masternode is required. The IP address
+and port that your masternode uses must be supplied. Also, the protocol
+version that your masternode supports is required. This information is
+filled in automatically if you import a “masternode.conf” file.</p>
+<div class="figure align-default" id="id3">
+<a class="reference internal image-reference" href="../../_images/mn-view.png"><img alt="../../_images/mn-view.png" src="../../_images/mn-view.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Entering IP and protocol information</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="collateral">
+<h3>Collateral<a class="headerlink" href="#collateral" title="Permalink to this headline">¶</a></h3>
+<p>To start a masternode, you must have a 1000 DASH payment available in
+your wallet. You can scan your wallet for 1000 DASH payments in the
+<strong>Choose Collateral</strong> tab of the Masternode Manager.</p>
+<p>After scanning, a list of available 1000 DASH collateral payments will
+be displayed. Selecting one of them will cause the selected masternode’s
+data to be filled in, though these changes won’t be saved until you
+click the <strong>Save</strong> button in the lower-right corner of the tab.</p>
+<div class="figure align-default" id="id4">
+<a class="reference internal image-reference" href="../../_images/mn-collateral.png"><img alt="../../_images/mn-collateral.png" src="../../_images/mn-collateral.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Entering IP and protocol information</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="activating-your-masternode">
+<h3>Activating your masternode<a class="headerlink" href="#activating-your-masternode" title="Permalink to this headline">¶</a></h3>
+<p>After selecting a collateral payment and specifying a delegate key, you
+can activate your masternode. Do this by clicking <strong>Activate
+Masternode</strong> in the <strong>Activate Masternode</strong> tab of the Masternode
+Manager. If the <strong>Activate Masternode</strong> button cannot be clicked, look
+at the message in the <strong>Status</strong> bar. It will show you why your
+masternode cannot be activated.</p>
+<p>Activation will require your password if your wallet is encrypted,
+because a message must be signed. After waiting for Dash Electrum to
+sign and broadcast your masternode announcement, you will be presented
+with a message detailing the result. The status of your masternode will
+be updated in the table and the <strong>View Masternode</strong> tab.</p>
+<div class="figure align-default" id="id5">
+<a class="reference internal image-reference" href="../../_images/mn-enabling.png"><img alt="../../_images/mn-enabling.png" src="../../_images/mn-enabling.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Entering IP and protocol information</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="importing-masternode-conf">
+<h3>Importing masternode.conf<a class="headerlink" href="#importing-masternode-conf" title="Permalink to this headline">¶</a></h3>
+<p>You can import a <em>masternode.conf</em> file using the <strong>Masternode.conf</strong>
+tab of the Masternode Manager. This is the recommended way of setting up
+masternodes, as it allows you to configure masternodes for Dash Core and
+Dash Electrum in the same way. Importing a <em>masternode.conf</em> file will
+automatically set up one or more masternode configurations in the
+Masternode Manager.</p>
+</div>
+</div>
+<div class="section" id="multisig-wallets">
+<h2>Multisig wallets<a class="headerlink" href="#multisig-wallets" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial shows how to create a 2 of 2 multisig wallet. A 2 of 2
+multisig consists of 2 separate wallets (usually on separate machines
+and potentially controlled by separate people) that have to be used in
+conjunction in order to access the funds. Both wallets have the same set
+of addresses.</p>
+<ul class="simple">
+<li><p>A common use-case for this is if you want to collaboratively control
+funds: maybe you and your friend run a company together and certain
+funds should only be spendable if you both agree.</p></li>
+<li><p>Another one is security: one of the wallets can be on your main
+machine, while the other one is on a offline machine. That way you
+make it very hard for an attacker or malware to steal your coins.</p></li>
+</ul>
+<div class="section" id="create-a-pair-of-2-of-2-wallets">
+<h3>Create a pair of 2-of-2 wallets<a class="headerlink" href="#create-a-pair-of-2-of-2-wallets" title="Permalink to this headline">¶</a></h3>
+<p>Each cosigner needs to do this: In the menu select <strong>File &gt; New</strong>, then
+select <strong>Multi-signature wallet</strong>. On the next screen, select 2 of 2.</p>
+<div class="figure align-default" id="id6">
+<a class="reference internal image-reference" href="../../_images/faq-multisig-create.png"><img alt="../../_images/faq-multisig-create.png" src="../../_images/faq-multisig-create.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Selecting x of y signatures for a multi-signature wallet</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>After generating and confirming your recovery seed, you will be shown the xpub address for this wallet.</p>
+<div class="figure align-default" id="id7">
+<a class="reference internal image-reference" href="../../_images/faq-multisig-xpub.png"><img alt="../../_images/faq-multisig-xpub.png" src="../../_images/faq-multisig-xpub.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">xpub key of the first wallet</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<p>After generating a seed (keep it safely!) you will need to provide the
+master public key of the other wallet. Of course when you create
+the other wallet, you put the master public key of the first wallet.</p>
+<div class="figure align-default" id="id8">
+<a class="reference internal image-reference" href="../../_images/faq-multisig-share-xpub.png"><img alt="../../_images/faq-multisig-share-xpub.png" src="../../_images/faq-multisig-share-xpub.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Entering xpub from the second wallet in the first wallet</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<p>You will need to do this in parallel for the two wallets. Note that you
+can press cancel during this step, and reopen the file later.</p>
+</div>
+<div class="section" id="receiving">
+<h3>Receiving<a class="headerlink" href="#receiving" title="Permalink to this headline">¶</a></h3>
+<p>Check that both wallets generate the same set of Addresses. You can now
+send to these <strong>Addresses</strong> (note they start with a “7”) with any wallet
+that can send to P2SH Addresses.</p>
+</div>
+<div class="section" id="sending">
+<h3>Sending<a class="headerlink" href="#sending" title="Permalink to this headline">¶</a></h3>
+<p>To spend coins from a 2-of-2 wallet, two cosigners need to sign a
+transaction collaboratively. To accomplish this, create a transaction
+using one of the wallets (by filling out the form on the <strong>Send</strong> tab).
+After signing, a window is shown with the transaction details.</p>
+<div class="figure align-default" id="id9">
+<a class="reference internal image-reference" href="../../_images/faq-multisig-partially-signed.png"><img alt="../../_images/faq-multisig-partially-signed.png" src="../../_images/faq-multisig-partially-signed.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Partially signed 2-of-2 multisig transaction in Dash Electrum</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<p>The transaction now has to be sent to the second wallet. Several options
+are available for this:</p>
+<ul>
+<li><p>You can transfer the file on a USB stick</p>
+<p>You can save the partially signed transaction to a file (using the
+<strong>Save</strong> button), transfer that to the machine where the second wallet
+is running (via USB stick, for example) and load it there (using
+<strong>Tools &gt; Load transaction &gt; From file</strong>)</p>
+</li>
+<li><p>You can use QR codes</p>
+<p>A button showing a QR code icon is also available. Clicking this
+button will display a QR code containing the transaction, which can be
+scanned into the second wallet (<strong>Tools &gt; Load Transaction &gt; From QR
+Code</strong>)</p>
+</li>
+</ul>
+<p>With both of the above methods, you can now add the second signature
+to the transaction (using the <strong>Sign</strong> button). It will then be
+broadcast to the network.</p>
+<div class="figure align-default" id="id10">
+<a class="reference internal image-reference" href="../../_images/faq-multisig-fully-signed.png"><img alt="../../_images/faq-multisig-fully-signed.png" src="../../_images/faq-multisig-fully-signed.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Fully signed 2-of-2 multisig transaction in Dash Electrum</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="sweep-a-paper-wallet">
+<h2>Sweep a paper wallet<a class="headerlink" href="#sweep-a-paper-wallet" title="Permalink to this headline">¶</a></h2>
+<p>You may have received a paper wallet as a gift from another Dash user,
+or previously stored one in a safe deposit box. Funds are swept from a
+<a class="reference internal" href="../index.html#paper-wallets"><span class="std std-ref">paper wallet</span></a> into a live wallet by importing its
+<a class="reference external" href="https://bitzuma.com/posts/six-things-bitcoin-users-should-know-about-private-keys/">private key</a>,
+which is a long sequence of characters starting with the number “7” or
+the capital letter “X”. The example below displays a private key (WIF
+format).</p>
+<div class="figure align-default" id="id11">
+<a class="reference internal image-reference" href="../../_images/sweep-secret.png"><img alt="../../_images/sweep-secret.png" src="../../_images/sweep-secret.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Public address and associated private key produced by Dash Paper
+Wallet Generator</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+<p>Funds from paper wallets are swept into an Dash Electrum Wallet by
+creating a transaction using the private key and sending it to a new
+address from your wallet. This is necessary because it is not possible
+to add new public or private keys to an existing deterministic series of
+addresses derived from a seed phrase.</p>
+<p>Begin by selecting the <strong>Wallet</strong> &gt; <strong>Private Keys</strong> &gt; <strong>Sweep</strong> menu
+item. The <strong>Sweep private keys</strong> dialog will appear, where you can
+paste your private key(s). An unused address controlled by your Dash
+Electrum wallet appears in the lower field, and can be changed by
+clicking the <strong>Address</strong> button. Once you have pasted your private key,
+click the <strong>Sweep</strong> button.</p>
+<div class="figure align-default" id="id12">
+<a class="reference internal image-reference" href="../../_images/sweep-privkey.png"><img alt="../../_images/sweep-privkey.png" src="../../_images/sweep-privkey.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Entering the private key</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+<p>Dash Electrum then prepares a transaction using the private key you just
+imported to derive the public address for the transaction input and the
+address from your wallet as the output, and signs the message. Click
+<strong>Broadcast</strong> to enter the transaction on the blockchain. The balance
+will then appear in your wallet under the specified address. The address
+you swept is left with zero balance.</p>
+<div class="figure align-default" id="id13">
+<a class="reference internal image-reference" href="../../_images/sweep-broadcast.png"><img alt="../../_images/sweep-broadcast.png" src="../../_images/sweep-broadcast.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Broadcasting the sweep transaction</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="cold-storage">
+<span id="electrum-cold-storage"></span><h2>Cold storage<a class="headerlink" href="#cold-storage" title="Permalink to this headline">¶</a></h2>
+<p>This section shows how to create an offline wallet that holds your Dash
+and a watching-only online wallet that is used to view its history and
+to create transactions that have to be signed with the offline wallet
+before being broadcast on the online one.</p>
+<div class="section" id="create-an-offline-wallet">
+<h3>Create an offline wallet<a class="headerlink" href="#create-an-offline-wallet" title="Permalink to this headline">¶</a></h3>
+<p>Create a wallet on an offline machine, as per the usual process (<strong>File
+&gt; New</strong>). After creating the wallet, go to <strong>Wallet -&gt; Master Public Keys</strong>.</p>
+<div class="figure align-default" id="id14">
+<a class="reference internal image-reference" href="../../_images/faq-cold-xpub.png"><img alt="../../_images/faq-cold-xpub.png" src="../../_images/faq-cold-xpub.png" style="width: 250px;" /></a>
+<p class="caption"><span class="caption-text">Master Public Key of a new offline wallet</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+<p>The Master Public Key of your wallet is the string shown in this popup
+window. Transfer that key to your online machine somehow.</p>
+</div>
+<div class="section" id="create-a-watching-only-version-of-your-wallet">
+<h3>Create a watching-only version of your wallet<a class="headerlink" href="#create-a-watching-only-version-of-your-wallet" title="Permalink to this headline">¶</a></h3>
+<p>On your online machine, open Dash Electrum and select <strong>File &gt;
+New/Restore</strong>. Enter a name for the wallet and select <strong>Use public or
+private keys</strong>. Paste your master public key in the box. Click <strong>Next</strong>
+to complete the creation of your wallet. When you’re done, you should
+see a popup informing you that you are opening a watching-only wallet.</p>
+<div class="figure align-default" id="id15">
+<a class="reference internal image-reference" href="../../_images/faq-cold-watching.png"><img alt="../../_images/faq-cold-watching.png" src="../../_images/faq-cold-watching.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Master Public Key of a new offline wallet</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</div>
+<p>The transaction history of your cold wallet should then appear.</p>
+</div>
+<div class="section" id="create-an-unsigned-transaction">
+<h3>Create an unsigned transaction<a class="headerlink" href="#create-an-unsigned-transaction" title="Permalink to this headline">¶</a></h3>
+<p>Go to the <strong>Send</strong> tab on your online watching-only wallet, input the
+transaction data and click <strong>Send</strong>. A window will appear to inform you
+that a transaction fee will be added. Continue. In the window that
+appears up, click <strong>Save</strong> and save the transaction file somewhere on
+your computer. Close the window and transfer the transaction file to
+your offline machine (e.g. with a USB stick).</p>
+</div>
+<div class="section" id="sign-your-transaction">
+<h3>Sign your transaction<a class="headerlink" href="#sign-your-transaction" title="Permalink to this headline">¶</a></h3>
+<p>On your offline wallet, select <strong>Tools &gt; Load transaction -&gt; From file</strong>
+in the menu and select the transaction file created in the previous
+step. Click <strong>Sign</strong>. Once the transaction is signed, the Transaction ID
+appears in its designated field. Click <strong>Save</strong>, store the file
+somewhere on your computer, and transfer it back to your online machine.</p>
+</div>
+<div class="section" id="broadcast-your-transaction">
+<h3>Broadcast your transaction<a class="headerlink" href="#broadcast-your-transaction" title="Permalink to this headline">¶</a></h3>
+<p>On your online machine, select <strong>Tools -&gt; Load transaction -&gt; From
+file</strong> from the menu. Select the signed transaction file. In the window
+that opens up, click <strong>Broadcast</strong>. The transaction will be broadcast
+over the Dash network.</p>
+</div>
+</div>
+<div class="section" id="command-line">
+<h2>Command line<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h2>
+<p>Dash Electrum has a powerful command line available when running under
+Linux or macOS. This section will show you a few basic principles.</p>
+<div class="section" id="using-the-inline-help">
+<h3>Using the inline help<a class="headerlink" href="#using-the-inline-help" title="Permalink to this headline">¶</a></h3>
+<p>To see the list of Dash Electrum commands, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">help</span>
+</pre></div>
+</div>
+<p>To see the documentation for a command, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">help</span> <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="magic-words">
+<h3>Magic words<a class="headerlink" href="#magic-words" title="Permalink to this headline">¶</a></h3>
+<p>The arguments passed to commands may be one of the following magic words: <cite>! ? : -</cite>.</p>
+<p>The exclamation mark <cite>!</cite> is a shortcut that means ‘the maximum amount
+available’. Note that the transaction fee will be computed and deducted
+from the amount. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>electrum payto Xtdw4fezqbSpC341vcr8u9HboiJMFa9gBq !
+</pre></div>
+</div>
+<p>A question mark <cite>?</cite> means that you want the parameter to be prompted.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>electrum signmessage Xtdw4fezqbSpC341vcr8u9HboiJMFa9gBq ?
+</pre></div>
+</div>
+<p>Use a colon <cite>:</cite> if you want the prompted parameter to be hidden (not
+echoed in your terminal). Note that you will be prompted twice in this
+example, first for the private key, then for your wallet password:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">importprivkey</span> <span class="p">:</span>
+</pre></div>
+</div>
+<p>A parameter replaced by a dash <cite>-</cite> will be read from standard input (in
+a pipe):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">LICENCE</span> <span class="o">|</span> <span class="n">electrum</span> <span class="n">signmessage</span> <span class="n">Xtdw4fezqbSpC341vcr8u9HboiJMFa9gBq</span> <span class="o">-</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="aliases">
+<h3>Aliases<a class="headerlink" href="#aliases" title="Permalink to this headline">¶</a></h3>
+<p>You can use DNS aliases in place of bitcoin addresses, in most commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>electrum payto ecdsa.net !
+</pre></div>
+</div>
+</div>
+<div class="section" id="formatting-outputs-using-jq">
+<h3>Formatting outputs using jq<a class="headerlink" href="#formatting-outputs-using-jq" title="Permalink to this headline">¶</a></h3>
+<p>Command outputs are either simple strings or json structured data. A
+very useful utility is the ‘jq’ program. Install it with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">jq</span>
+</pre></div>
+</div>
+<p>The following examples use it.</p>
+<div class="section" id="sign-and-verify-message">
+<h4>Sign and verify message<a class="headerlink" href="#sign-and-verify-message" title="Permalink to this headline">¶</a></h4>
+<p>We may use a variable to store the signature, and verify it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sig=$(cat LICENCE| electrum signmessage Xtdw4fezqbSpC341vcr8u9HboiJMFa9gBq -)
+</pre></div>
+</div>
+<p>And:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat LICENCE | electrum verifymessage Xtdw4fezqbSpC341vcr8u9HboiJMFa9gBq $sig -
+</pre></div>
+</div>
+</div>
+<div class="section" id="show-the-values-of-your-unspents">
+<h4>Show the values of your unspents<a class="headerlink" href="#show-the-values-of-your-unspents" title="Permalink to this headline">¶</a></h4>
+<p>The <cite>listunspent</cite> command returns a list of dict objects, with various
+fields. Suppose we want to extract the <cite>value</cite> field of each record.
+This can be achieved with the jq command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">listunspent</span> <span class="o">|</span> <span class="n">jq</span> <span class="s1">&#39;map(.value)&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-only-incoming-transactions-from-history">
+<h4>Select only incoming transactions from history<a class="headerlink" href="#select-only-incoming-transactions-from-history" title="Permalink to this headline">¶</a></h4>
+<p>Incoming transactions have a positive ‘value’ field:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">history</span> <span class="o">|</span> <span class="n">jq</span> <span class="s1">&#39;.[] | select(.value&gt;0)&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filter-transactions-by-date">
+<h4>Filter transactions by date<a class="headerlink" href="#filter-transactions-by-date" title="Permalink to this headline">¶</a></h4>
+<p>The following command selects transactions that were timestamped after a
+given date:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>after=$(date -d &#39;07/01/2015&#39; +&quot;%s&quot;)
+electrum history | jq --arg after $after &#39;.[] | select(.timestamp&gt;($after|tonumber))&#39;
+</pre></div>
+</div>
+<p>Similarly, we may export transactions for a given time period:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>before=$(date -d &#39;08/01/2015&#39; +&quot;%s&quot;)
+after=$(date -d &#39;07/01/2015&#39; +&quot;%s&quot;)
+electrum history | jq --arg before $before --arg after $after &#39;.[] | select(.timestamp&amp;gt;($after|tonumber) and .timestamp&amp;lt;($before|tonumber))&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="encrypt-and-decrypt-messages">
+<h4>Encrypt and decrypt messages<a class="headerlink" href="#encrypt-and-decrypt-messages" title="Permalink to this headline">¶</a></h4>
+<p>First we need the public key of a wallet address:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pk=$(electrum getpubkeys Xtdw4fezqbSpC341vcr8u9HboiJMFa9gBq| jq -r &#39;.[0]&#39;)
+</pre></div>
+</div>
+<p>Encrypt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat | electrum encrypt $pk -
+</pre></div>
+</div>
+<p>Decrypt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>electrum decrypt $pk ?
+</pre></div>
+</div>
+<p>Note: this command will prompt for the encrypted message, then for the
+wallet password.</p>
+</div>
+<div class="section" id="export-private-keys-and-sweep-coins">
+<h4>Export private keys and sweep coins<a class="headerlink" href="#export-private-keys-and-sweep-coins" title="Permalink to this headline">¶</a></h4>
+<p>The following command will export the private keys of all wallet
+addresses that hold some Dash:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">listaddresses</span> <span class="o">--</span><span class="n">funded</span> <span class="o">|</span> <span class="n">electrum</span> <span class="n">getprivatekeys</span> <span class="o">-</span>
+</pre></div>
+</div>
+<p>This will return a list of lists of private keys. In most cases, you
+want to get a simple list. This can be done by adding a jq filer, as
+follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">listaddresses</span> <span class="o">--</span><span class="n">funded</span> <span class="o">|</span> <span class="n">electrum</span> <span class="n">getprivatekeys</span> <span class="o">-</span> <span class="o">|</span> <span class="n">jq</span> <span class="s1">&#39;map(.[0])&#39;</span>
+</pre></div>
+</div>
+<p>Finally, let us use this list of private keys as input to the sweep command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">listaddresses</span> <span class="o">--</span><span class="n">funded</span> <span class="o">|</span> <span class="n">electrum</span> <span class="n">getprivatekeys</span> <span class="o">-</span> <span class="o">|</span> <span class="n">jq</span> <span class="s1">&#39;map(.[0])&#39;</span> <span class="o">|</span> <span class="n">electrum</span> <span class="n">sweep</span> <span class="o">-</span> <span class="p">[</span><span class="n">destination</span> <span class="n">address</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-cold-storage-with-the-command-line">
+<h2>Using cold storage with the command line<a class="headerlink" href="#using-cold-storage-with-the-command-line" title="Permalink to this headline">¶</a></h2>
+<p>This section will show you how to sign a transaction with an offline
+Dash Electrum wallet using the command line.</p>
+<div class="section" id="id1">
+<h3>Create an unsigned transaction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>With your online (watching-only) wallet, create an unsigned transaction:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">payto</span> <span class="n">Xtdw4fezqbSpC341vcr8u9HboiJMFa9gBq</span> <span class="mf">0.1</span> <span class="o">--</span><span class="n">unsigned</span> <span class="o">&gt;</span> <span class="n">unsigned</span><span class="o">.</span><span class="n">txn</span>
+</pre></div>
+</div>
+<p>The unsigned transaction is stored in a file named ‘unsigned.txn’. Note
+that the –unsigned option is not needed if you use a watching-only
+wallet.</p>
+<p>You may view it using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">unsigned</span><span class="o">.</span><span class="n">txn</span> <span class="o">|</span> <span class="n">electrum</span> <span class="n">deserialize</span> <span class="o">-</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sign-the-transaction">
+<h3>Sign the transaction<a class="headerlink" href="#sign-the-transaction" title="Permalink to this headline">¶</a></h3>
+<p>The serialization format of Dash Electrum contains the master public key
+needed and key derivation used by the offline wallet to sign the
+transaction. Thus we only need to pass the serialized transaction to the
+offline wallet:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">unsigned</span><span class="o">.</span><span class="n">txn</span> <span class="o">|</span> <span class="n">electrum</span> <span class="n">signtransaction</span> <span class="o">-</span> <span class="o">&gt;</span> <span class="n">signed</span><span class="o">.</span><span class="n">txn</span>
+</pre></div>
+</div>
+<p>The command will ask for your password, and save the signed transaction in ‘signed.txn’.</p>
+</div>
+<div class="section" id="broadcast-the-transaction">
+<h3>Broadcast the transaction<a class="headerlink" href="#broadcast-the-transaction" title="Permalink to this headline">¶</a></h3>
+<p>Send your transaction to the Dash network, using broadcast:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">signed</span><span class="o">.</span><span class="n">txn</span> <span class="o">|</span> <span class="n">electrum</span> <span class="n">broadcast</span> <span class="o">-</span>
+</pre></div>
+</div>
+<p>If successful, the command will return the ID of the transaction.</p>
+</div>
+</div>
+<div class="section" id="how-to-accept-dash-on-a-website-using-dash-electrum">
+<h2>How to accept Dash on a website using Dash Electrum<a class="headerlink" href="#how-to-accept-dash-on-a-website-using-dash-electrum" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial will show you how to accept dash on a website with SSL
+signed payment requests. It is updated for Dash Electrum 2.6.</p>
+<div class="section" id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>A webserver serving static HTML</p></li>
+<li><p>A SSL certificate (signed by a CA)</p></li>
+<li><p>Electrum version &gt;= 2.6</p></li>
+</ul>
+</div>
+<div class="section" id="create-a-wallet">
+<h3>Create a wallet<a class="headerlink" href="#create-a-wallet" title="Permalink to this headline">¶</a></h3>
+<p>Create a wallet on your web server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">create</span>
+</pre></div>
+</div>
+<p>You can also use a watching only wallet (restored from xpub), if you
+want to keep private keys off the server. Once your wallet is created,
+start Dash Electrum as a daemon:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">daemon</span> <span class="n">start</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-your-ssl-certificate-to-your-configuration">
+<h3>Add your SSL certificate to your configuration<a class="headerlink" href="#add-your-ssl-certificate-to-your-configuration" title="Permalink to this headline">¶</a></h3>
+<p>You should have a private key and a public certificate for your domain.
+Create a file that contains only the private key:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-----</span><span class="n">BEGIN</span> <span class="n">PRIVATE</span> <span class="n">KEY</span><span class="o">-----</span>
+<span class="n">your</span> <span class="n">private</span> <span class="n">key</span>
+<span class="o">-----</span><span class="n">BEGIN</span> <span class="n">END</span> <span class="n">KEY</span><span class="o">-----</span>
+</pre></div>
+</div>
+<p>Set the path to your the private key file with setconfig:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">setconfig</span> <span class="n">ssl_privkey</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">ssl</span><span class="o">.</span><span class="n">key</span>
+</pre></div>
+</div>
+<p>Create another file that contains your certificate and the list of
+certificates it depends on, up to the root CA. Your certificate must be
+at the top of the list, and the root CA at the end:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-----</span><span class="n">BEGIN</span> <span class="n">CERTIFICATE</span><span class="o">-----</span>
+<span class="n">your</span> <span class="n">cert</span>
+<span class="o">-----</span><span class="n">END</span> <span class="n">CERTIFICATE</span><span class="o">-----</span>
+<span class="o">-----</span><span class="n">BEGIN</span> <span class="n">CERTIFICATE</span><span class="o">-----</span>
+<span class="n">intermediate</span> <span class="n">cert</span>
+<span class="o">-----</span><span class="n">END</span> <span class="n">CERTIFICATE</span><span class="o">-----</span>
+<span class="o">-----</span><span class="n">BEGIN</span> <span class="n">CERTIFICATE</span><span class="o">-----</span>
+<span class="n">root</span> <span class="n">cert</span>
+<span class="o">-----</span><span class="n">END</span> <span class="n">CERTIFICATE</span><span class="o">-----</span>
+</pre></div>
+</div>
+<p>Set the <cite>ssl_chain</cite> path with setconfig:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">setconfig</span> <span class="n">ssl_chain</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">ssl</span><span class="o">.</span><span class="n">chain</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-a-requests-directory">
+<h3>Configure a requests directory<a class="headerlink" href="#configure-a-requests-directory" title="Permalink to this headline">¶</a></h3>
+<p>This directory must be served by your webserver (eg Apache):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">setconfig</span> <span class="n">requests_dir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">r</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>By default, Dash Electrum will display local URLs, starting with
+‘<a class="reference external" href="file://">file://</a>‘ In order to display public URLs, we need to set another
+configuration variable, <cite>url_rewrite</cite>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">setconfig</span> <span class="n">url_rewrite</span> <span class="s2">&quot;[&#39;file:///var/www/&#39;,&#39;https://electrum.org/&#39;]&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-signed-payment-request">
+<h3>Create a signed payment request<a class="headerlink" href="#create-a-signed-payment-request" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">addrequest</span> <span class="mf">3.14</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;this is a test&quot;</span>
+<span class="p">{</span>
+   <span class="s2">&quot;URI&quot;</span><span class="p">:</span> <span class="s2">&quot;dash:Xtdw4fezqbSpC341vcr8u9HboiJMFa9gBq?amount=3.14&amp;r=https://electrum.org/r/7c2888541a&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;Xtdw4fezqbSpC341vcr8u9HboiJMFa9gBq&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">314000000</span><span class="p">,</span>
+   <span class="s2">&quot;amount (DASH)&quot;</span><span class="p">:</span> <span class="s2">&quot;3.14&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
+   <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7c2888541a&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;index_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://electrum.org/r/index.html?id=7c2888541a&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;memo&quot;</span><span class="p">:</span> <span class="s2">&quot;this is a test&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;request_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://electrum.org/r/7c2888541a&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Pending&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="mi">1450175741</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This command returns a json object with two URLs:</p>
+<ul class="simple">
+<li><p><cite>request_url</cite> is the URL of the signed BIP70 request.</p></li>
+<li><p><cite>index_url</cite> is the URL of a webpage displaying the request.</p></li>
+</ul>
+<p>Note that request_url and index_url use the domain name we defined in
+<cite>url_rewrite</cite>. You can view the current list of requests using the
+<cite>listrequests</cite> command.</p>
+</div>
+<div class="section" id="open-the-payment-request-page-in-your-browser">
+<h3>Open the payment request page in your browser<a class="headerlink" href="#open-the-payment-request-page-in-your-browser" title="Permalink to this headline">¶</a></h3>
+<p>Let us open <cite>index_url</cite> in a web browser.</p>
+<div class="figure align-default" id="id16">
+<a class="reference internal image-reference" href="../../_images/payrequest.png"><img alt="../../_images/payrequest.png" src="../../_images/payrequest.png" style="width: 200px;" /></a>
+<p class="caption"><span class="caption-text">Payment request page in a web browser</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</div>
+<p>The page shows the payment request. You can open the dash: URI with a
+wallet, or scan the QR code. The bottom line displays the time remaining
+until the request expires.</p>
+<div class="figure align-default" id="id17">
+<a class="reference internal image-reference" href="../../_images/payreq_window.png"><img alt="../../_images/payreq_window.png" src="../../_images/payreq_window.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Wallet awaiting payment</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</div>
+<p>This page can already be used to receive payments. However, it will not
+detect that a request has been paid; for that we need to configure
+websockets.</p>
+</div>
+<div class="section" id="add-web-sockets-support">
+<h3>Add web sockets support<a class="headerlink" href="#add-web-sockets-support" title="Permalink to this headline">¶</a></h3>
+<p>Get SimpleWebSocketServer from here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ecdsa</span><span class="o">/</span><span class="n">simple</span><span class="o">-</span><span class="n">websocket</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Set <cite>websocket_server</cite> and <cite>websocket_port</cite> in your config:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">setconfig</span> <span class="n">websocket_server</span> <span class="o">&lt;</span><span class="n">FQDN</span> <span class="n">of</span> <span class="n">your</span> <span class="n">server</span><span class="o">&gt;</span>
+<span class="n">electrum</span> <span class="n">setconfig</span> <span class="n">websocket_port</span> <span class="mi">9999</span>
+</pre></div>
+</div>
+<p>And restart the daemon:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">daemon</span> <span class="n">stop</span>
+<span class="n">electrum</span> <span class="n">daemon</span> <span class="n">start</span>
+</pre></div>
+</div>
+<p>Now, the page is fully interactive: it will update itself when the
+payment is received. Please notice that higher ports might be blocked on
+some client’s firewalls, so it is more safe for example to reverse proxy
+websockets transmission using standard 443 port on an additional
+subdomain.</p>
+</div>
+<div class="section" id="jsonrpc-interface">
+<h3>JSONRPC interface<a class="headerlink" href="#jsonrpc-interface" title="Permalink to this headline">¶</a></h3>
+<p>Commands to the Dash Electrum daemon can be sent using JSONRPC. This is
+useful if you want to use Dash Electrum in a PHP script.</p>
+<p>Note that the daemon uses a random port number by default. In order to
+use a stable port number, you need to set the <cite>rpcport</cite> configuration
+variable (and to restart the daemon):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrum</span> <span class="n">setconfig</span> <span class="n">rpcport</span> <span class="mi">7777</span>
+</pre></div>
+</div>
+<p>With this setting, we can perform queries using curl or PHP. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">binary</span> <span class="s1">&#39;{&quot;id&quot;:&quot;curltext&quot;,&quot;method&quot;:&quot;getbalance&quot;,&quot;params&quot;:[]}&#39;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">7777</span>
+</pre></div>
+</div>
+<p>Query with named parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">binary</span> <span class="s1">&#39;{&quot;id&quot;:&quot;curltext&quot;,&quot;method&quot;:&quot;listaddresses&quot;,&quot;params&quot;:{&quot;funded&quot;:true}}&#39;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">7777</span>
+</pre></div>
+</div>
+<p>Create a payment request:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">binary</span> <span class="s1">&#39;{&quot;id&quot;:&quot;curltext&quot;,&quot;method&quot;:&quot;addrequest&quot;,&quot;params&quot;:{&quot;amount&quot;:&quot;3.14&quot;,&quot;memo&quot;:&quot;test&quot;}}&#39;</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">7777</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../android/installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="faq.html" class="btn btn-neutral float-left" title="Frequently Asked Questions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Dash Core Group, Inc
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

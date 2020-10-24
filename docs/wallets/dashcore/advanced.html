@@ -1,0 +1,1577 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta content="Coin control, HD wallets, multisig, KeePass and multiple wallet files using the Dash Core wallet" name="description" />
+<meta content="dash, core, wallet, backup, restore, wallet.dat, multisig, KeePass, hd, seed, passphrase, mnemonic, coin control, hierarchical deterministic" name="keywords" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced topics &mdash; Dash latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/js/lang.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installation" href="../electrum/installation.html" />
+    <link rel="prev" title="Arguments and commands" href="cmd-rpc.html" />
+    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+    <meta name="google-site-verification" content="JVzTMPjsCY-U-SaJERGf-eviRxXUPfFkPFdiF_MINCU" />
+    <meta name="author" content="Dash Core Group, Inc." />
+    <meta name="copyright" content="© Copyright 2019 Dash Core Group, Inc." />
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "Organization",
+			"url": "https://www.dash.org",
+			"mainEntityOfPage": {
+				"@type": "WebPage",
+				"@id": "https://docs.dash.org"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Dash Core Group, Inc.",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https://docs.dash.org/en/stable/_images/dash_logo.png",
+					"width": 1446,
+					"height": 424
+				}
+			}
+		}
+	</script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/dash_logo_white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">First Steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/about.html">What is Dash?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/about.html#dash-videos">Dash Videos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/about.html#id1">What is Dash?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/about.html#dash-school">Dash School</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/about.html#dash-101">Dash 101</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/about.html#whitepaper">Whitepaper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/about.html#roadmap">Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/features.html">Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#specifications">Specifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#masternodes">Masternodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#privatesend">PrivateSend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#instantsend">InstantSend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#chainlocks">ChainLocks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/features.html#chainlocks-process-overview">ChainLocks Process Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#sporks">Sporks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#x11-hash-algorithm">X11 Hash Algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/features.html#advantages-of-x11">Advantages of X11</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#dark-gravity-wave">Dark Gravity Wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#emission-rate">Emission Rate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/features.html#total-coin-emission">Total coin emission</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/features.html#block-reward-allocation">Block reward allocation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#decentralized-governance">Decentralized Governance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#sentinel">Sentinel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#fees">Fees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/features.html#evolution">Evolution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/features.html#evolution-previews">Evolution Previews</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/how-to-buy.html">How To Buy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/how-to-buy.html#marketplace-comparison-websites">Marketplace comparison websites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/how-to-buy.html#atms">ATMs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/safety.html">Safety</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/safety.html#impersonation">Impersonation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/safety.html#scams">Scams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/safety.html#ponzi-schemes">Ponzi Schemes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/information.html">Links and Information</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/information.html#links">Links</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#official-sites">Official sites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#community-sites">Community sites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#forums">Forums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#chat">Chat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#social-media">Social media</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#facebook">Facebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#twitter">Twitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#news">News</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#blogs">Blogs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#wikipedia">Wikipedia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#inactive">Inactive</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/information.html#tools">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#block-explorers-statistics-and-visualizations">Block explorers, statistics and visualizations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#treasury-tools">Treasury tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#masternode-management">Masternode management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#price-monitoring-and-statistics">Price monitoring and statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#dash-community-project">Dash Community project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#darknet-pages">DarkNet pages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/information.html#mobile-apps">Mobile Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#ios">iOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../introduction/information.html#android">Android</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/information.html#glossary">Glossary</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Wallets</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#dash-core-wallet">Dash Core Wallet</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="installation-linux.html">Linux Installation Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation-macos.html">macOS Installation Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation-windows.html">Windows Installation Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="interface.html">Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="interface.html#the-main-window">The Main Window</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface.html#the-options-dialog">The Options Dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interface.html#the-tools-dialog">The Tools Dialog</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="send-receive.html">Sending and receiving</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="send-receive.html#sending-dash">Sending Dash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="send-receive.html#receiving-dash">Receiving Dash</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="privatesend-instantsend.html">PrivateSend and InstantSend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="privatesend-instantsend.html#privatesend">PrivateSend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="privatesend-instantsend.html#instantsend">InstantSend</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="backup.html">Wallet backup and restore</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backup.html#backup">Backup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="backup.html#restore">Restore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="backup.html#backup-storage-considerations">Backup storage considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="backup.html#verifying-backups">Verifying backups</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cmd-rpc.html">Arguments and commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cmd-rpc.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cmd-rpc.html#rpc-commands">RPC commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Advanced topics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#coin-control">Coin Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hd-wallets">HD Wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multisignature">Multisignature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#daemon">Daemon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tor">Tor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-wallets">Multiple wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#keepass">KeePass</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dash-electrum-wallet">Dash Electrum Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../electrum/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/installation.html#download">Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/installation.html#creating-a-new-wallet">Creating a New Wallet</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../electrum/send-receive.html">Sending and receiving</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/send-receive.html#sending">Sending</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/send-receive.html#receiving">Receiving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/send-receive.html#monitoring-transactions">Monitoring transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../electrum/security.html">Wallet security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/security.html#change-password">Change password</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/security.html#backup">Backup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/security.html#restore">Restore</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../electrum/faq.html">Frequently Asked Questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#how-does-dash-electrum-work">How does Dash Electrum work?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#does-dash-electrum-trust-servers">Does Dash Electrum trust servers?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#what-is-the-seed">What is the Seed?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#how-secure-is-the-seed">How secure is the seed?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#what-are-change-addresses">What are change addresses?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#how-can-i-send-the-maximum-available-in-my-wallet">How can I send the maximum available in my wallet?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#how-can-i-send-dash-without-paying-a-transaction-fee">How can I send Dash without paying a transaction fee?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#is-there-a-way-to-enter-amounts-in-usd-in-dash-electrum">Is there a way to enter amounts in USD in Dash Electrum?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#what-does-it-mean-to-freeze-an-address-in-dash-electrum">What does it mean to “Freeze” an address in Dash Electrum?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#how-is-the-wallet-encrypted">How is the wallet encrypted?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#i-have-forgotten-my-password-but-still-have-my-seed-is-there-any-way-i-can-recover-my-password">I have forgotten my password but still have my seed. Is there any way I can recover my password?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#does-dash-electrum-support-cold-wallets">Does Dash Electrum support cold wallets?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#can-i-import-private-keys-from-other-dash-clients">Can I import private keys from other Dash clients?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#can-i-sweep-private-keys-from-other-dash-clients">Can I sweep private keys from other Dash clients?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#where-is-my-wallet-file-located">Where is my wallet file located?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#can-i-do-bulk-payments-with-dash-electrum">Can I do bulk payments with Dash Electrum?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#can-dash-electrum-create-and-sign-raw-transactions">Can Dash Electrum create and sign raw transactions?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#dash-electrum-freezes-when-i-try-to-send-dash">Dash Electrum freezes when I try to send Dash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#what-is-the-gap-limit">What is the gap limit?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#how-can-i-pre-generate-new-addresses">How can I pre-generate new addresses?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/faq.html#how-to-upgrade-dash-electrum">How to upgrade Dash Electrum?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../electrum/advanced.html">Advanced functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/advanced.html#privatesend">PrivateSend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/advanced.html#hardware-wallets">Hardware Wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/advanced.html#masternodes">Masternodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/advanced.html#multisig-wallets">Multisig wallets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/advanced.html#sweep-a-paper-wallet">Sweep a paper wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/advanced.html#cold-storage">Cold storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/advanced.html#command-line">Command line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/advanced.html#using-cold-storage-with-the-command-line">Using cold storage with the command line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../electrum/advanced.html#how-to-accept-dash-on-a-website-using-dash-electrum">How to accept Dash on a website using Dash Electrum</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dash-android-wallet">Dash Android Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../android/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../android/installation.html#google-play">Google Play</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/installation.html#from-apk">From APK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/installation.html#from-source">From source</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../android/getting-started.html">Getting started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../android/getting-started.html#creating-a-new-wallet">Creating a new wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/getting-started.html#restoring-from-backup">Restoring from backup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/getting-started.html#receiving">Receiving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/getting-started.html#sending">Sending</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/getting-started.html#buying">Buying</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../android/advanced-functions.html">Advanced functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../android/advanced-functions.html#address-book">Address book</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/advanced-functions.html#exchange-rates">Exchange rates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/advanced-functions.html#sweep-paper-wallet">Sweep paper wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/advanced-functions.html#network-monitor">Network monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../android/advanced-functions.html#settings">Settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dash-ios-wallet">Dash iOS Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ios/installation.html">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../ios/installation.html#app-store">App Store</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ios/installation.html#compiling-from-source">Compiling from source</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ios/getting-started.html">Getting started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../ios/getting-started.html#creating-a-new-wallet">Creating a new wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ios/getting-started.html#receiving">Receiving</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../ios/getting-started.html#sending">Sending</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../ios/advanced-functions.html">Advanced functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../ios/advanced-functions.html#url-scheme">URL Scheme</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#dash-paper-wallet">Dash Paper Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../paper.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../paper.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../paper.html#death-plan">Death plan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../paper.html#tools">Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../paper.html#address-generation">Address generation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../paper.html#encryption">Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../paper.html#sending-to-a-paper-wallet-and-viewing-the-balance">Sending to a paper wallet and viewing the balance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../paper.html#spending-from-a-paper-wallet">Spending from a paper wallet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../paper.html#optional-decrypt-bip38-key-to-wif">Optional: Decrypt BIP38 key to WIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../paper.html#importing-the-private-key-to-your-live-wallet">Importing the private key to your live wallet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#hardware-wallets">Hardware Wallets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../hardware.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hardware.html#trezor">Trezor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../hardware.html#getting-started">Getting Started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hardware.html#receiving-dash">Receiving Dash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hardware.html#sending-dash">Sending Dash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hardware.html#advanced-functions">Advanced Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../hardware.html#keepkey">KeepKey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hardware.html#ledger">Ledger</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#third-party-wallets">Third Party Wallets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#abra">Abra</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#adamant">ADAMANT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id1">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id2">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#atomic-wallet">Atomic Wallet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id3">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id4">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#channels">Channels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id5">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id6">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#cobo">Cobo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id7">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id8">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#coinomi">Coinomi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#download">Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id9">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#cryptonator">Cryptonator</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id10">Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id11">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#edge">Edge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id12">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id13">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#ethos">Ethos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id14">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id15">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#evercoin">Evercoin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id16">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id17">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#exodus">Exodus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id18">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id19">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#guarda">Guarda</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id20">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id21">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#huobi-wallet">Huobi Wallet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id23">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id24">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#jaxx">Jaxx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id25">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id26">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#kurepay">KurePay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id27">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id28">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#magnum">Magnum</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id29">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id30">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#mobi">Mobi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id31">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id32">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#ownbit">Ownbit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id33">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id34">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#paytomat">Paytomat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id35">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id36">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#spend">Spend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id37">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id38">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#trust">Trust</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id39">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id40">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../third-party.html#vegawallet">VegaWallet</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id41">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../third-party.html#id42">Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#web-wallets">Web Wallets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../web.html">MyDashWallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../web.html#magnum-wallet">Magnum Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../web.html#westwallet">WestWallet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#text-wallets">Text Wallets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../text.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text.html#dashtext">DashText</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../text.html#instructions">Instructions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#wallet-guides">Wallet Guides</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../recovery.html">Wallet Recovery</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../recovery.html#determining-the-backup-format">Determining the backup format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recovery.html#file-backups">File Backups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recovery.html#recovery-phrases">Recovery Phrases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recovery.html#private-keys">Private Keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../recovery.html#forgotten-passwords">Forgotten Passwords</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../signing.html">Signing and Verifying Messages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../signing.html#signing-a-message">Signing a Message</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../signing.html#verifying-a-message">Verifying a Message</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../earning-spending.html">Earning and Spending</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../earning-spending.html#earning">Earning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../earning-spending.html#spending">Spending</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../earning-spending.html#merchant-directory">Merchant Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../earning-spending.html#debit-cards">Debit Cards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../earning-spending.html#tax">Tax</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Merchants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../merchants/getting-started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/getting-started.html#payment-processors">Payment Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/getting-started.html#installation-examples">Installation Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../merchants/getting-started.html#woocommerce-and-gocoin">WooCommerce and GoCoin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../merchants/getting-started.html#woocommerce-and-coinpayments-net">WooCommerce and CoinPayments.net</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../merchants/getting-started.html#point-of-sale-with-anypay">Point-of-Sale with Anypay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../merchants/getting-started.html#point-of-sale-with-spark">Point-of-Sale with Spark</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../merchants/administrative.html">Administrative Processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/administrative.html#onboarding-process">Onboarding Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/administrative.html#promoting-dash">Promoting Dash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/administrative.html#currency-conversion">Currency Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../merchants/administrative.html#legal-considerations">Legal considerations</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Network</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../governance/index.html">Governance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../governance/understanding.html">Understanding Dash Governance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#budgets-and-masternode-voting">Budgets and masternode voting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#reward-schedule">Reward schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#contractors-and-proposals">Contractors and proposals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#proposal-websites">Proposal websites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#budget-allocation">Budget allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#scaling-and-future-uses">Scaling and future uses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/understanding.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../governance/using.html">Using Dash Governance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/using.html#understanding-the-process">Understanding the process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#proposals">Proposals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#votes">Votes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#budgets">Budgets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#object-structure">Object structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#persistence">Persistence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#templates">Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/using.html#budget-cycles">Budget cycles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/using.html#creating-proposals">Creating proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#dash-budget-proposal-generator">Dash Budget Proposal Generator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#dashcentral-proposal-generator">DashCentral Proposal Generator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../governance/using.html#voting-on-proposals">Voting on proposals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#dashcentral">DashCentral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#dash-masternode-tool-dmt">Dash Masternode Tool (DMT)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#dash-core-wallet-or-masternode">Dash Core wallet or masternode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../governance/using.html#delegating-votes">Delegating votes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../governance/eight-steps.html">8 Steps to a Successful Proposal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../masternodes/index.html">Masternodes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../masternodes/understanding.html">Understanding Masternodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#dip003-masternode-changes">DIP003 Masternode Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#masternodes-vs-mining">Masternodes vs. mining</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#payment-logic">Payment logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#proof-of-service">Proof of Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#quorum-selection">Quorum selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/understanding.html#masternode-requirements">Masternode requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/understanding.html#dash-evolution">Dash Evolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../masternodes/hosting.html">Hosting Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/hosting.html#list-of-hosting-services">List of hosting services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#crowdnode">CrowdNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#allnodes">Allnodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#sid-hosting-service">SID Hosting Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#node40">Node40</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#pool-of-stake">Pool of Stake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#staked">Staked</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#nodehub-io">NodeHub.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#gentarium">Gentarium</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#penny-scavengers">Penny Scavengers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/hosting.html#masternodehosting">Masternodehosting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/hosting.html#registering-a-hosted-masternode">Registering a hosted masternode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/hosting.html#operator-transactions">Operator transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../masternodes/setup.html">Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#before-you-begin">Before you begin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#set-up-your-vps">Set up your VPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#set-up-your-operating-system">Set up your operating system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#send-the-collateral">Send the collateral</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/setup.html#option-1-sending-from-a-hardware-wallet">Option 1: Sending from a hardware wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/setup.html#option-2-sending-from-dash-core-wallet">Option 2: Sending from Dash Core wallet</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#install-dash-core">Install Dash Core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/setup.html#manual-installation">Manual installation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/setup.html#register-your-masternode">Register your masternode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/setup.html#option-1-registering-from-a-hardware-wallet">Option 1: Registering from a hardware wallet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/setup.html#option-2-registering-from-dash-core-wallet">Option 2: Registering from Dash Core wallet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../masternodes/maintenance.html">Maintenance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/maintenance.html#masternode-software-update">Masternode Software Update</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#manual-update">Manual update</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/maintenance.html#updating-masternode-information">Updating Masternode Information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#proupservtx">ProUpServTx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#proupregtx">ProUpRegTx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#prouprevtx">ProUpRevTx</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/maintenance.html#proof-of-service-bans">Proof of Service Bans</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/maintenance.html#dashcentral-voting-verification-and-monitoring">DashCentral voting, verification and monitoring</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#adding-your-masternode-to-dashcentral">Adding your masternode to DashCentral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#enabling-voting-from-dashcentral">Enabling voting from DashCentral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#verifying-ownership">Verifying ownership</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#installing-the-dashcentral-monitoring-script">Installing the DashCentral monitoring script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/maintenance.html#masternode-monitoring-tools">Masternode monitoring tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#block-explorers">Block Explorers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#dash-masternode-tool">Dash Masternode Tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#dash-ninja">DASH Ninja</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#id1">DashCentral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#masternode-me">Masternode.me</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../masternodes/maintenance.html#dash-masternode-information">Dash Masternode Information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../masternodes/advanced.html">Advanced Topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/advanced.html#installing-dash-on-fedora-linux">Installing Dash on Fedora Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../masternodes/advanced.html#installing-dash-on-ubuntu-linux">Installing Dash on Ubuntu Linux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../mining/index.html">Mining</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mining/index.html#masternodes-vs-mining">Masternodes vs. Mining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mining/index.html#mining-pools">Mining Pools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/pools.html">Mining Pools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../mining/pools.html#miner-hosting">Miner Hosting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../mining/pools.html#setting-up-your-miner">Setting up your miner</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/p2pool.html">P2Pool Node Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../mining/p2pool.html#setting-up-the-host-server">Setting up the host server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../mining/p2pool.html#setting-up-port-forwarding">Setting up port forwarding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../mining/p2pool.html#manual-setup">Manual setup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../mining/index.html#cpu-mining">CPU Mining</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#mining-software">Mining software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../mining/index.html#gpu-mining">GPU Mining</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#id5">Mining software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#id6">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mining/index.html#id7">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../mining/index.html#asic-mining">ASIC Mining</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers/index.html">Developers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/integration.html">Integration Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#special-transactions">Special Transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#instantsend">InstantSend</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#receiving-instantsend-transactions">Receiving InstantSend Transactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#broadcasting-instantsend-transactions">Broadcasting InstantSend Transactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#api-services">API Services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#insight">Insight</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#blockcypher">BlockCypher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#bitgo">BitGo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#chainrider">ChainRider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#blockmove">Blockmove</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#nownodes">NOWNodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#gocoin">GoCoin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#coinpayments">CoinPayments</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#sdk-resources">SDK Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#dash-developer-guide">Dash Developer Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#nodejs-javascript-dashcore">NodeJS/JavaScript: Dashcore</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#nodejs-javascript-dashjs">NodeJS/JavaScript: DashJS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#php-bitcoin-php">PHP: Bitcoin-PHP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#python-pycoin">Python: PyCoin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#java-dashj">Java: DashJ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#objective-c-dash-sync">Objective-C: Dash-Sync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#net-nbitcoin">.NET: NBitcoin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#id3">BlockCypher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/integration.html#id4">GoCoin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#vending-machines">Vending Machines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#price-tickers">Price Tickers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/integration.html#qr-codes">QR Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/dip3-upgrade.html">Dash 0.13 Upgrade Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/dip3-upgrade.html#installation-notes">Installation notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/dip3-upgrade.html#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/dip3-upgrade.html#libraries-and-apis">Libraries and APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/dip8-upgrade.html">Dash 0.14 Upgrade Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/dip8-upgrade.html#installation-notes">Installation notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/dip8-upgrade.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/v016-upgrade.html">Dash 0.16 Upgrade Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/v016-upgrade.html#installation-notes">Installation notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/v016-upgrade.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/translating.html">Translating Dash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-core">Dash Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-docs">Dash Docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-graphics">Dash Graphics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-ios-wallet">Dash iOS Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-android-wallet">Dash Android Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-videos">Dash Videos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/translating.html#dash-website">Dash Website</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/compiling.html">Compiling Dash Core</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/compiling.html#gitian">Gitian</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/testnet.html">Testnet and devnets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#tools-and-links">Tools and links</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/testnet.html#faucets">Faucets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/testnet.html#explorers">Explorers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developers/testnet.html#pools">Pools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#masternodes">Masternodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-16-0">Testnet 0.16.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-15-0">Testnet 0.15.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-14-0">Testnet 0.14.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-13-0">Testnet 0.13.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-12-3">Testnet 0.12.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/testnet.html#testnet-0-12-2">Testnet 0.12.2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/insight.html">Insight API Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/index.html#sporks">Sporks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/index.html#spork-functions">Spork functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developers/index.html#viewing-spork-status">Viewing spork status</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developers/index.html#version-history">Version History</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../marketing.html">Marketing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../marketing.html#design-materials">Design Materials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#brochures">Brochures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#flyers">Flyers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#handouts">Handouts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#infographics">Infographics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing.html#the-dash-difference">The Dash Difference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing.html#ten-misconceptions-about-dash">Ten Misconceptions About Dash</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#presentations">Presentations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing.html#dash-meetup">Dash Meetup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing.html#simple-presentation">Simple presentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../marketing.html#dash-101-presentation">Dash 101 Presentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../marketing.html#business-templates">Business Templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#document-templates">Document templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#presentation-templates">Presentation templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#cards">Cards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../marketing.html#fonts">Fonts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../legal.html">Legal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../legal.html#how-the-law-applies-to-dash">How the Law Applies to Dash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../legal.html#tax-treatment">Tax Treatment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../legal.html#block-rewards">Block rewards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../legal.html#dash-collateral">Dash Collateral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../legal.html#capital-gains">Capital Gains</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../legal.html#legal-liability">Legal Liability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../legal.html#primary-liability">Primary Liability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../legal.html#secondary-liability">Secondary Liability</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../legal.html#exchange-liability">Exchange Liability</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../legal.html#privatesend-legal-position">PrivateSend Legal Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../legal.html#atm-fiat-compliance">ATM &amp; Fiat Compliance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../legal.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../legal.html#dash-atm-compliance-program">Dash ATM Compliance Program</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Dash</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Wallets</a> &raquo;</li>
+        
+      <li>Advanced topics</li>
+    
+    
+	<select class="wy-breadcrumbs-aside" id="langselect">
+		<option value="de">Deutsch</option>
+		<option value="en" selected="selected">English</option>
+		<option value="es">Español</option>
+		<option value="fr">Français</option>
+		<option value="pt">Português</option>
+		<option value="tl">Tagalog</option>
+		<option value="vi">Tiếng Việt</option>
+		<option value="el">Ελληνικά</option>
+		<option value="ru">Русский</option>
+		<option value="ko">한국어</option>
+		<option value="ja">日本語</option>
+		<option value="zh_CN">简体中文</option>
+		<option value="zh_TW">繁体中文</option>
+		<option value="ar">العربية</option>
+	</select>
+
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="advanced-topics">
+<span id="dashcore-advanced"></span><h1>Advanced topics<a class="headerlink" href="#advanced-topics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="coin-control">
+<span id="id1"></span><h2>Coin Control<a class="headerlink" href="#coin-control" title="Permalink to this headline">¶</a></h2>
+<p>Coin Control allows users of the Dash Core Wallet to specify which
+addresses and Unspent Transaction Outputs (UTXOs) should be used as
+inputs in transactions. This allows you to keep a specific balance on
+certain addresses in your wallet, while spending others freely. In Dash
+Core Wallet, click <strong>Settings &gt; Options &gt; Wallet &gt; Enable coin control
+features</strong>. Now, when you go to the Send tab in your wallet, a new
+button labelled <strong>Inputs…</strong> will appear. Click this button to select
+which UTXOs can be used as input for any transactions you create. The
+following window appears:</p>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="../../_images/coin-selection.png"><img alt="../../_images/coin-selection.png" src="../../_images/coin-selection.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-text">Coin Selection window in Dash Core wallet, showing two masternodes
+(testnet)</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Right click on the transaction(s) you do not want to spend, then select
+<strong>Lock unspent</strong>. A small lock will appear next to the transaction. You
+can click the <strong>Toggle lock state</strong> button to invert the locked/unlocked
+state of all UTXOs. When you are ready to continue, click <strong>OK</strong>. You
+can now safely create transactions with your remaining funds without
+affecting the locked UTXOs.</p>
+<a class="reference internal image-reference" href="../../_images/coin-selection-lock.png"><img alt="../../_images/coin-selection-lock.png" src="../../_images/coin-selection-lock.png" style="width: 220px;" /></a>
+<div class="figure align-default" id="id3">
+<a class="reference internal image-reference" href="../../_images/coin-selection-locked.png"><img alt="../../_images/coin-selection-locked.png" src="../../_images/coin-selection-locked.png" style="width: 180px;" /></a>
+<p class="caption"><span class="caption-text">Locking UTXOs in Dash Core wallet</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="hd-wallets">
+<span id="dashcore-hd"></span><h2>HD Wallets<a class="headerlink" href="#hd-wallets" title="Permalink to this headline">¶</a></h2>
+<p>Since version 0.12.2.0, Dash Core has included an implementation of
+BIP39/BIP44 compatible hierarchical deterministic (HD) key generation.
+This functionality is only available from the command line by specifying
+the <code class="docutils literal notranslate"><span class="pre">usehd</span></code> option when starting Dash Core for the first time. Use
+this function with care, since the mnemonic seed and keys will be stored
+in plain text until you specify a wallet passphrase. Note that the
+wallet passphrase is different to the mnemonic passphrase, which is
+often also referred to as the “25th word” or “extension word”. The
+wallet passphrase encrypts the wallet file itself, while the mnemonic
+passphrase is used to specify different derivation branches from the
+same mnemonic seed.</p>
+<p>We will use the Windows GUI wallet in this example, but the commands are
+similar if using <code class="docutils literal notranslate"><span class="pre">dash-qt</span></code> or <code class="docutils literal notranslate"><span class="pre">dashd</span></code> on other operating systems.
+Enter the following command to get started with a randomly generated HD
+wallet seed and no mnemonic passphrase:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dash</span><span class="o">-</span><span class="n">qt</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">usehd</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>A new HD wallet will be generated and Dash Core will display a warning
+informing you that you must encrypt your wallet after verifying it works
+correctly. Open the console from <strong>Tools -&gt; Debug console</strong> or issue the
+following RPC command from <code class="docutils literal notranslate"><span class="pre">dash-cli</span></code> to view the mnemonic seed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dumphdinfo</span>
+</pre></div>
+</div>
+<p>Dash Core will display the HD seed in both hexadecimal and as a BIP39
+mnemonic. To restore an existing HD wallet, or define your own
+separately generated mnemonic and/or passphrase, ensure no
+<code class="docutils literal notranslate"><span class="pre">wallet.dat</span></code> file exists in the <code class="docutils literal notranslate"><span class="pre">datadir</span></code> and enter the following
+command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dash</span><span class="o">-</span><span class="n">qt</span><span class="o">.</span><span class="n">exe</span> <span class="o">--</span><span class="n">usehd</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="n">mnemonic</span><span class="o">=</span><span class="s2">&quot;enter mnemonic&quot;</span> <span class="o">--</span><span class="n">mnemonicpassphrase</span><span class="o">=</span><span class="s2">&quot;optional mnemonic passphrase&quot;</span>
+</pre></div>
+</div>
+<p>The HD wallet will be restored and your balance will appear once sync is
+complete.</p>
+</div>
+<div class="section" id="multisignature">
+<span id="dashcore-multisig"></span><h2>Multisignature<a class="headerlink" href="#multisignature" title="Permalink to this headline">¶</a></h2>
+<p>This section presents a worked example to demonstrate multisig
+functionality in Dash Core. While the transactions are no longer visible
+on the current testnet blockchain and some address formats or RPC
+responses may differ slightly from the version shown here, the principle
+and commands are the same. The example demonstrates how to set up a
+2-of-3 multisig address and create a transaction. The example parties
+involved are a buyer, a seller and an arbiter. This example is based on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://gist.github.com/jashmenn/9811198">https://gist.github.com/jashmenn/9811198</a></p></li>
+<li><p><a class="reference external" href="https://gist.github.com/gavinandresen/3966071">https://gist.github.com/gavinandresen/3966071</a></p></li>
+<li><p><a class="reference external" href="https://bitcoin.org/en/developer-examples#p2sh-multisig">https://bitcoin.org/en/developer-examples#p2sh-multisig</a></p></li>
+</ul>
+<div class="section" id="step-1-create-three-addresses">
+<h3>Step 1: Create three addresses<a class="headerlink" href="#step-1-create-three-addresses" title="Permalink to this headline">¶</a></h3>
+<p>Seller:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>seller@testnet03:~$ ./dash-cli getnewaddress
+n18cPEtj4ZfToPZxRszUz2XPts4eGsxiPk
+seller@testnet03:~$ ./dash-cli validateaddress n18cPEtj4ZfToPZxRszUz2XPts4eGsxiPk
+{
+    &quot;isvalid&quot; : true,
+    &quot;address&quot; : &quot;n18cPEtj4ZfToPZxRszUz2XPts4eGsxiPk&quot;,
+    &quot;ismine&quot; : true,
+    &quot;isscript&quot; : false,
+    &quot;pubkey&quot; : &quot;02a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e&quot;,
+    &quot;iscompressed&quot; : true,
+    &quot;account&quot; : &quot;&quot;
+}
+seller@testnet03:~$ ./dash-cli dumpprivkey n18cPEtj4ZfToPZxRszUz2XPts4eGsxiPk
+cVQVgBr8sW4FTPYz16BSCo1PcAfDhpJArgMPdLxKZQWcVFwMXRXx
+</pre></div>
+</div>
+<p>Buyer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>buyer@testnet03:~$ ./dash-cli getnewaddress
+mp5orHuaFaHCXFSCeYvUPL7H16JU8fKG6u
+buyer@testnet03:~$ ./dash-cli validateaddress mp5orHuaFaHCXFSCeYvUPL7H16JU8fKG6u
+{
+    &quot;isvalid&quot; : true,
+    &quot;address&quot; : &quot;mp5orHuaFaHCXFSCeYvUPL7H16JU8fKG6u&quot;,
+    &quot;ismine&quot; : true,
+    &quot;isscript&quot; : false,
+    &quot;pubkey&quot; : &quot;0315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c&quot;,
+    &quot;iscompressed&quot; : true,
+    &quot;account&quot; : &quot;&quot;
+}
+buyer@testnet03:~$ ./dash-cli dumpprivkey mp5orHuaFaHCXFSCeYvUPL7H16JU8fKG6u
+cP9DFmEDb11waWbQ8eG1YUoZCGe59BBxJF3kk95PTMXuG9HzcxnU
+</pre></div>
+</div>
+<p>Arbiter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>arbiter@testnet03:~$ ./dash-cli getnewaddress
+n1cZSyQXhach5rrj2tm5wg6JC7uZ3qPNiN
+arbiter@testnet03:~$ ./dash-cli validateaddress n1cZSyQXhach5rrj2tm5wg6JC7uZ3qPNiN
+{
+    &quot;isvalid&quot; : true,
+    &quot;address&quot; : &quot;n1cZSyQXhach5rrj2tm5wg6JC7uZ3qPNiN&quot;,
+    &quot;ismine&quot; : true,
+    &quot;isscript&quot; : false,
+    &quot;pubkey&quot; : &quot;0287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce&quot;,
+    &quot;iscompressed&quot; : true,
+    &quot;account&quot; : &quot;&quot;
+}
+arbiter@testnet03:~$ ./dash-cli dumpprivkey n1cZSyQXhach5rrj2tm5wg6JC7uZ3qPNiN
+cUbDFL81a2w6urAGZf7ecGbdzM82pdHLeCaPXdDp71s96SzDV49M
+</pre></div>
+</div>
+<p>This results in three keypairs (public/private):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seller</span><span class="p">:</span>    <span class="mi">02</span><span class="n">a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e</span> <span class="o">/</span> <span class="n">cVQVgBr8sW4FTPYz16BSCo1PcAfDhpJArgMPdLxKZQWcVFwMXRXx</span>
+<span class="n">buyer</span><span class="p">:</span>     <span class="mi">0315617694</span><span class="n">c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c</span> <span class="o">/</span> <span class="n">cP9DFmEDb11waWbQ8eG1YUoZCGe59BBxJF3kk95PTMXuG9HzcxnU</span>
+<span class="n">arbiter</span><span class="p">:</span>   <span class="mi">0287</span><span class="n">ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce</span> <span class="o">/</span> <span class="n">cUbDFL81a2w6urAGZf7ecGbdzM82pdHLeCaPXdDp71s96SzDV49M</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-2-create-multisig-address">
+<h3>Step 2: Create multisig address<a class="headerlink" href="#step-2-create-multisig-address" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">createmultisig</span></code> command takes as variables the number n
+signatures of m keys (supplied as json array) required. In this example,
+2 of 3 keys are required to sign the transaction.</p>
+<p>Note: The address can be created by anyone, as long as the public keys
+and their sequence are known (resulting address and redeemScript are
+identical, see below).</p>
+<p>Seller:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>seller@testnet03:~$ ./dash-cli createmultisig 2 &#39;[&quot;02a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e&quot;,&quot;0315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c&quot;,&quot;0287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce&quot;]&#39;
+{
+    &quot;address&quot; : &quot;2MuEQCZh7VB8pNrT4bj1CFZQh2oK7XZYLQf&quot;,
+    &quot;redeemScript&quot; : &quot;522102a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e210315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c210287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce53ae&quot;
+}
+</pre></div>
+</div>
+<p>Buyer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>buyer@testnet03:~$ ./dash-cli createmultisig 2 &#39;[&quot;02a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e&quot;,&quot;0315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c&quot;,&quot;0287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce&quot;]&#39;
+{
+    &quot;address&quot; : &quot;2MuEQCZh7VB8pNrT4bj1CFZQh2oK7XZYLQf&quot;,
+    &quot;redeemScript&quot; : &quot;522102a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e210315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c210287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce53ae&quot;
+}
+</pre></div>
+</div>
+<p>Arbiter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>arbiter@testnet03:~$ ./dash-cli createmultisig 2 &#39;[&quot;02a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e&quot;,&quot;0315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c&quot;,&quot;0287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce&quot;]&#39;
+{
+    &quot;address&quot; : &quot;2MuEQCZh7VB8pNrT4bj1CFZQh2oK7XZYLQf&quot;,
+    &quot;redeemScript&quot; : &quot;522102a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e210315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c210287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce53ae&quot;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-3-buyer-funds-the-multisig-address">
+<h3>Step 3: Buyer funds the multisig address<a class="headerlink" href="#step-3-buyer-funds-the-multisig-address" title="Permalink to this headline">¶</a></h3>
+<p>This works the same as a usual transaction.</p>
+<p>Buyer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>buyer@testnet03:~$ ./dash-cli sendtoaddress 2MuEQCZh7VB8pNrT4bj1CFZQh2oK7XZYLQf 777.77
+a8b3bf5bcace91a8dbbddbf9b7eb027efb9bd001792f043ecf7b558aaa3cb951
+</pre></div>
+</div>
+<p>The seller/arbiter can trace the transaction by its txid in the block
+explorer. Or from the console as follows.</p>
+<p>Buyer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>seller@testnet03:~$ ./dash-cli getrawtransaction a8b3bf5bcace91a8dbbddbf9b7eb027efb9bd001792f043ecf7b558aaa3cb951 1
+{
+    &quot;hex&quot; : &quot;010000001a2e514dd90f666e3de4cddd22682ae1ca7225988656369d98228c742482fee16b010000006b48304502200ea8dddd404aac644fd382d3089480f2c9a6ce753a3c4fc0b12ac81afe8ffa3b022100d88f698a0d9fefbbf76240790530fe7e23bf6b354a1feedb4effa99813405b00012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff3181c52614be8742c36665b6a287a2d6c7970494b0a341ff9595c1c9a8f23aa2010000006b483045022041ee176da4df13adc782c9ff2afdb24c4e1b61b450895486388431bf1a88b81f02210082be1b3bd20d3f121c971fb745cba52523f6b8093ec93df5987c9beb302c19ac012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff332356f7d5e4264302ca4cc0f38d2a75a9b4c1df4bc4f94044f8a8fab81b7e1b010000006b483045022100dc322074961ae5e2e8cb11828301b1e083eff9ed6078aa064c52ed70d52737410220776b99c8552bbc2e644c7450ef8502d3497c3de7196b176f1c49cca18d1ff09f012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff388b56a8a74338ce10e931dc198ed25fa4cb7213e0ea9905d32a3e902366661f010000006b48304502206d2cdfe9af498e9e46f88d0bd881746bf2dae182664d03f7a635ff599bdee84b022100bf3a7b88ed80b30d8915a2ae34d546defbc9a660ebf941afb4aa29461e0b4c95012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff44578d7579bef2a204359f8c878993480b306193d954ee735c53f8b3e076c3ea010000006c4930460221008a67da5764934392437fa9e05483e4b29204fd5d78dea01f744d4a23c403881b022100c77e58307f58953b578de568138659b4efd2fadaec51917c2270fab0bd4a57a6012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff4a3b7b666ce8f249ef4f253b7f718fb5cc2f21f899608d319bcc04c75ec47353010000006b48304502203ca5a0559647ee0d1790714296396ca0bca27a3ef3e68f76706c63da9cd3684f0221008c9529f7a54d89440f8dca89c1c47725821012670d05a70681b57f182b069a74012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff4ab5d98908e4424929bfdba3d6402e6b45db60a622b4df8c73da1b37bdb949a4010000006b48304502210094da4e007ba94cdb47a8c4805dab4b93dc475a44340a9b6f6d7956d49749e3d3022077b94861995ffe3f59429bf5b873914d3c1157f23f018697650bc3bd2dc2de1f012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff4cd58c1ad5b0ffd8556deff402854d94a79222799916be8e0f88d0cca3c38c85010000006b483045022030e72eec0386c83489efff8f3c71aed8eec0265565cddeb1492aab6644cc63220221008d6df06656dae12dae573b860d65045f088e4df5e2127902231d8edd4196ef1d012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff501ff2345fc47b9b7749afcc32e790fdbe5d22fd96b2c5d0522d4cad0cd5566f010000006a47304402204e9bc23796974fdf323c49399ca7db76e2238630add4c617631549f4595af4a80220658038b14884c1a0d730de79c7e2769d4d28135ed7896e7aff01ca94c8edf7bb012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff5020fe72d4c1038213cc3e1b99f5b313c4b2d57f1e0d9abba90860dc5c38630a010000006a473044022071b7cca6a7d72fef4b46ad425c23c37f28c72501e5e61821f00e022c4c8ef49502200d8ba406fe336d64a8ae909cad20d0ffe302cd977900013ea72b37c488550625012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff59f32023d4225cc193182e81444f00f6d95652a9458daa08f4324ab4bdac7bed010000006b4830450221009e0f701840c01c2c37e2baec0ea2c43d517126107ef874c3d68f32dfa2e4f05f02206d1306dee274267598d5ab8d7c4c26346d25d8118b30a6921b9b238307916d6e012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff05b5b8ecaf7bcbd5fdfc64fd7dbd6ebfee18dcaf57e00b6711ba0abe4329eb23010000006a47304402200515822e6d9641c72f1af7968ba63d47463caffeca03733750b0866ef123fe00022071fd40bac12aa1d36244fc5391162b70ec306a5ed2dffef3a3d4995524317a10012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff09cc372e4409bcbacd85adb17918ca5b20427dc280b44bd4f234fb698ac07fc6010000006b483045022051e5c430110e8b0d85693c421031f14abf89bee1a14702e6655a1eaa2663927c0221009a54781fddd4093032507f12fe8a97ce926a743851a1a56c2ca70026ce98b7e6012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff0963f2cc80666835ae8c5939ac3011d2962ae88e872cdc13257cfb0188f83c7a010000006b483045022032fd819b1cdb8f506e27f26b3e46330c498b965386c3e96c34dceeff2a517cf7022100a4c34d77ed25116dc05ca7d783bd6cb91c1e38db0541878dac72f2d63d4b7c11012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff14cff38ccbdd840ffc491614e9b5167edb6ad6b9eeaf8e3dc30feaeefa39d820010000006c493046022100f4d6dfce7778acee6bdcf9f2ec39dbf902b6ca977b8622c886eadddefa01bf5502210089b3c2d23b5fc5b03d2d6ea4bf28f04b98342b02dd7d2020a6466bddd85c3d50012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff63750bbce93657a59fe3472fce714eafa09791fcf7f687f30a923162f2ba5196010000006c493046022100bbbf84829fcc2ec70bc6d77cfc69f512c1a14359958eee46243001908dc2a0ab0221008f1fbda61fcfccb78fe6d4e6385e8f508035676ef82654425bb704727f1e59b4012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff6466da482404f4a719f7eb16798d05878af2c36ad7174e2b68964693f39e954b010000006a47304402204d57344da5a1a29ea800215d19ada89787b1026f7e47c2f2f1ea0ef82bec5b6d02203039bd98546843a99d9e6749819875a4d996a682c57a192d9e5cef9b694a028b012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff8b0b4a84522fded19446eef3fdd94cc0f7449c71b6e0080837d5f240c78ce03b010000006c493046022100c152177ec49bb572d70976b53c10d0c4be55584975d657c43e87fbaac8c081ec0221009dd150697257cf769c3e90afbde88fbbe5f95c17c561883546537644ed628f6f012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff8d7078622b75fc2c3ea1094d07099b0e460a7f7a4c53cf225d066f919f17daf6010000006b483045022100e440d404867748cfba792119faae12d286b265a185cec86215fe2737ec1e7ca402207770447154f81564f7022b375943c2b7eaf3d05a3281c6f5c70328b098423d7d012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff98c23cc59412943bfedba3b4a48bb2f97f58c119946e5c492031c43a36dd576e010000006c493046022100910cf6fb057269e5e02fa44fc2ba03925d9e0e3232d3d5a66aac440db9627f9f022100b656d982dec47000de616f21a331b1fb5e19d1ab312c5845f5f1538dac4dd301012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff9d4851f00e3c2fa22816adc55703fcb539ae0fe218f369f23af079964a6225fc020000006c4930460221009918ee137e4aead4760c79dbe940556ae1ecb7935a653543b486f4198f16cc6a022100f82e04cd970f2c5fd8dd48813e38f87c10ed8fa7b45eec1854562948f9d43a1b012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffffa13c3221f0e08289657208bccf7b466ea5795c591751065a20b16f00892bd598010000006b483045022073d9fed13def14a655fd423f5c4fa63e46eeea76668cdf8bb89d96630890760d022100f70edce3513c9cbc671f92dc0b4d97c5edc0d9d26f4e726bb2d66776a3b9e411012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffffcac4f229bd19c47cd15ee9355af8383531a960ba0e0f3e8e4fa0a607ab2000d9010000006b483045022100967624e60a7670e849eb7500cf185620fd65de10d1e5f7cef9131d3c6403cb5f022005182af16fba1b7dbdd27a8935205b439c6034d566c6f14950aba6bb328cbf79012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffffcbf8cb94ee2bcda1c9ceb54feaf6815441f722b70c4f7569525cc9dee7cbbdc2010000006b4830450221008cfcfdc62f0a398e2419ebd56cf067e2abadf8116936250939b9fa763dd428680220052c6d316189d5f7164d2423aae99e97d05165f3e5c7d138e2858f0adab4ebba012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffffdbad6da5900987f77e5bcf714c935889fbea2d3ff388586a331fe42e0a82efe0010000006c493046022100e80d73130bcd25faa73764f4ff6c05e1b401f3960b7ef30b4244daaf5fce953a022100b99a55caaaa312df54c7d743791052c3e8392725becf91d2aa886d2e8259af10012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689fffffffffdc2d56fd131ae16837fc86e3015c9e78077dd36b6a2591cf1d500c584bbcc6a010000006b483045022100d13e5a55a4a71e039603bd2d3d76a757c63b1d199bcf340e3f2eeb5bed10897c022046a43ecc6cd8295981bde38c34c29708e402db59fc93e657196fc3032858d967012103954bfa8b6b1b0f1f5624ea2925b18cd1477fde2087eada1a51323a6617172689ffffffff0240d6de1b1200000017a91415c85c2472f5941b60a49462a2cfd0d17ab49d1c87c02fdf67000000001976a914b8d899f7193a7b3278be037b006c8f08998ebef388ac00000000&quot;,
+    &quot;txid&quot; : &quot;a8b3bf5bcace91a8dbbddbf9b7eb027efb9bd001792f043ecf7b558aaa3cb951&quot;,
+    &quot;version&quot; : 1,
+    &quot;locktime&quot; : 0,
+[...]
+    &quot;vout&quot; : [
+        {
+            &quot;value&quot; : 777.77000000,
+            &quot;n&quot; : 0,
+            &quot;scriptPubKey&quot; : {
+                &quot;asm&quot; : &quot;OP_HASH160 15c85c2472f5941b60a49462a2cfd0d17ab49d1c OP_EQUAL&quot;,
+                &quot;hex&quot; : &quot;a91415c85c2472f5941b60a49462a2cfd0d17ab49d1c87&quot;,
+                &quot;reqSigs&quot; : 1,
+                &quot;type&quot; : &quot;scripthash&quot;,
+                &quot;addresses&quot; : [
+                    &quot;2MuEQCZh7VB8pNrT4bj1CFZQh2oK7XZYLQf&quot;
+                ]
+            }
+        },
+[...]
+    ],
+    &quot;blockhash&quot; : &quot;000000034def806f348cadf6a80660aed1cfc30ccbd1492a8ea87062800ea94d&quot;,
+    &quot;confirmations&quot; : 3,
+    &quot;time&quot; : 1409224896,
+    &quot;blocktime&quot; : 1409224896
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-4-spending-the-multisig">
+<h3>Step 4: Spending the multisig<a class="headerlink" href="#step-4-spending-the-multisig" title="Permalink to this headline">¶</a></h3>
+<p>Now we assume the deal is complete, the buyer got the goods and everyone
+is happy. Now the seller wants to get his Dash. As a 2-of-3 multisig was
+used, the transaction must be signed by 2 parties (seller + buyer or
+arbiter). The seller creates a transaction (we will reuse his public
+address from above).</p>
+<p>Seller:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>seller@testnet03:~$ ./dash-cli createrawtransaction &#39;[{&quot;txid&quot;:&quot;a8b3bf5bcace91a8dbbddbf9b7eb027efb9bd001792f043ecf7b558aaa3cb951&quot;,&quot;vout&quot;:0}]&#39; &#39;{&quot;n18cPEtj4ZfToPZxRszUz2XPts4eGsxiPk&quot;:777.77}&#39;
+010000000151b93caa8a557bcf3e042f7901d09bfb7e02ebb7f9dbbddba891ceca5bbfb3a80000000000ffffffff0140d6de1b120000001976a914d728be76cd74b5d148eba2a49246b80dac12f73e88ac00000000
+</pre></div>
+</div>
+<p>And partially signs it, using the redeemScript, scriptPubKey and his
+private key</p>
+<p>Seller:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>seller@testnet03:~$ ./dash-cli signrawtransaction &#39;010000000151b93caa8a557bcf3e042f7901d09bfb7e02ebb7f9dbbddba891ceca5bbfb3a80000000000ffffffff0140d6de1b120000001976a914d728be76cd74b5d148eba2a49246b80dac12f73e88ac00000000&#39; &#39;[{&quot;txid&quot;:&quot;a8b3bf5bcace91a8dbbddbf9b7eb027efb9bd001792f043ecf7b558aaa3cb951&quot;,&quot;vout&quot;:0,&quot;scriptPubKey&quot;:&quot;a91415c85c2472f5941b60a49462a2cfd0d17ab49d1c87&quot;,&quot;redeemScript&quot;:&quot;522102a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e210315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c210287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce53ae&quot;}]&#39; &#39;[&quot;cVQVgBr8sW4FTPYz16BSCo1PcAfDhpJArgMPdLxKZQWcVFwMXRXx&quot;]&#39;
+{
+    &quot;hex&quot; : &quot;010000000151b93caa8a557bcf3e042f7901d09bfb7e02ebb7f9dbbddba891ceca5bbfb3a800000000b500483045022051a7f0e95a5066859ce37fe64a6e7ab6e30bfe9a68d9d3f1453064052eab5625022100c0067a33d2ee02478d89fc1a71f3a93c883db022e970886181c50ca9afc3dfa4014c69522102a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e210315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c210287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce53aeffffffff0140d6de1b120000001976a914d728be76cd74b5d148eba2a49246b80dac12f73e88ac00000000&quot;,
+    &quot;complete&quot; : false
+}
+</pre></div>
+</div>
+<p>Note that the output hex is getting longer, but complete flag is “false”
+as the transaction needs another signature. So now either the buyer or
+the arbiter can complete the signature of the transaction, using the
+output from above and their private key. Let’s assume the buyer is
+completing the signature.</p>
+<p>Buyer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>buyer@testnet03:~$ ./dash-cli signrawtransaction &#39;010000000151b93caa8a557bcf3e042f7901d09bfb7e02ebb7f9dbbddba891ceca5bbfb3a800000000b500483045022051a7f0e95a5066859ce37fe64a6e7ab6e30bfe9a68d9d3f1453064052eab5625022100c0067a33d2ee02478d89fc1a71f3a93c883db022e970886181c50ca9afc3dfa4014c69522102a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e210315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c210287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce53aeffffffff0140d6de1b120000001976a914d728be76cd74b5d148eba2a49246b80dac12f73e88ac00000000&#39; &#39;[{&quot;txid&quot;:&quot;a8b3bf5bcace91a8dbbddbf9b7eb027efb9bd001792f043ecf7b558aaa3cb951&quot;,&quot;vout&quot;:0,&quot;scriptPubKey&quot;:&quot;a91415c85c2472f5941b60a49462a2cfd0d17ab49d1c87&quot;,&quot;redeemScript&quot;:&quot;522102a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e210315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c210287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce53ae&quot;}]&#39; &#39;[&quot;cP9DFmEDb11waWbQ8eG1YUoZCGe59BBxJF3kk95PTMXuG9HzcxnU&quot;]&#39;
+{
+    &quot;hex&quot; : &quot;010000000151b93caa8a557bcf3e042f7901d09bfb7e02ebb7f9dbbddba891ceca5bbfb3a800000000fdff0000483045022051a7f0e95a5066859ce37fe64a6e7ab6e30bfe9a68d9d3f1453064052eab5625022100c0067a33d2ee02478d89fc1a71f3a93c883db022e970886181c50ca9afc3dfa401493046022100dc3f61fdb7b8ea7ec729682d355646c922f5512054c4985534e6b91040c5bd660221008b48c117ec95814f573d33bca981cb703fdd9fa6e52aa8fe67423e06cad87215014c69522102a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e210315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c210287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce53aeffffffff0140d6de1b120000001976a914d728be76cd74b5d148eba2a49246b80dac12f73e88ac00000000&quot;,
+    &quot;complete&quot; : true
+}
+</pre></div>
+</div>
+<p>The signature is complete now, and either of the parties can transmit
+the transaction to the network.</p>
+<p>Buyer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>buyer@testnet03:~$ ./dash-cli sendrawtransaction 010000000151b93caa8a557bcf3e042f7901d09bfb7e02ebb7f9dbbddba891ceca5bbfb3a800000000fdff0000483045022051a7f0e95a5066859ce37fe64a6e7ab6e30bfe9a68d9d3f1453064052eab5625022100c0067a33d2ee02478d89fc1a71f3a93c883db022e970886181c50ca9afc3dfa401493046022100dc3f61fdb7b8ea7ec729682d355646c922f5512054c4985534e6b91040c5bd660221008b48c117ec95814f573d33bca981cb703fdd9fa6e52aa8fe67423e06cad87215014c69522102a862b412ff9e3afd01a2873a02622897f6df92e3fc85597788b898309fec882e210315617694c9d93f0ce92769e050a6868ffc74d229077379c0af8bfb193c3d351c210287ce6cf69b85593ce7db801874c9a2fb1b653dbe5dd9ebfa73e98b710af9e9ce53aeffffffff0140d6de1b120000001976a914d728be76cd74b5d148eba2a49246b80dac12f73e88ac00000000
+cf1a75672006a05b38d94acabb783f81976c9e83a8de4da9cbec0de711cf2d71
+</pre></div>
+</div>
+<p>Again, this transaction can be traced in a block explorer. And the
+seller is happy to receive his coins at his public address as follows.</p>
+<p>Seller:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>seller@testnet03:~$ dash-cli listtransactions &quot;&quot; 1
+[
+    {
+        &quot;account&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;n18cPEtj4ZfToPZxRszUz2XPts4eGsxiPk&quot;,
+        &quot;category&quot; : &quot;receive&quot;,
+        &quot;amount&quot; : 777.77000000,
+        &quot;confirmations&quot; : 17,
+        &quot;blockhash&quot; : &quot;000000067a13e9bd5c1d5ff48cb4b9f8414a6adcc470656262731bfd013510dd&quot;,
+        &quot;blockindex&quot; : 9,
+        &quot;blocktime&quot; : 1409228449,
+        &quot;txid&quot; : &quot;cf1a75672006a05b38d94acabb783f81976c9e83a8de4da9cbec0de711cf2d71&quot;,
+        &quot;time&quot; : 1409227887,
+        &quot;timereceived&quot; : 1409227887
+    }
+]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="daemon">
+<span id="dashcore-daemon"></span><h2>Daemon<a class="headerlink" href="#daemon" title="Permalink to this headline">¶</a></h2>
+<p>Dash can be run as a background process (or daemon) on Linux systems.
+This is particularly useful if you are running Dash as a server instead
+of as a GUI node. This guide assumes you have installed Dash Core for
+Linux as described in the <a class="reference internal" href="installation-linux.html#dashcore-installation-linux"><span class="std std-ref">Linux Installation Guide</span></a>.</p>
+<ol class="arabic">
+<li><p>Create a user and group to run the daemon:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">useradd</span> <span class="o">-</span><span class="n">m</span> <span class="n">dash</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a data directory for Dash in the new user’s home directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">dash</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">dash</span><span class="o">/.</span><span class="n">dashcore</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a configuration file in the new Dash data directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">dash</span> <span class="n">nano</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">dash</span><span class="o">/.</span><span class="n">dashcore</span><span class="o">/</span><span class="n">dash</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</li>
+<li><p>Paste the following basic configuration to your <code class="docutils literal notranslate"><span class="pre">dash.conf</span></code> file,
+replacing the password with a long and random password:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">listen</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">server</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">daemon</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+<li><p>Register the <code class="docutils literal notranslate"><span class="pre">dashd</span></code> daemon as a system service by creating the following file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">dashd</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+</li>
+<li><p>Paste the following daemon configuration into the file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">Dash</span> <span class="n">Core</span> <span class="n">Daemon</span>
+<span class="n">After</span><span class="o">=</span><span class="n">syslog</span><span class="o">.</span><span class="n">target</span> <span class="n">network</span><span class="o">-</span><span class="n">online</span><span class="o">.</span><span class="n">target</span>
+
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">Type</span><span class="o">=</span><span class="n">forking</span>
+<span class="n">User</span><span class="o">=</span><span class="n">dash</span>
+<span class="n">Group</span><span class="o">=</span><span class="n">dash</span>
+<span class="n">OOMScoreAdjust</span><span class="o">=-</span><span class="mi">1000</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">dashd</span> <span class="o">-</span><span class="n">pid</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dash</span><span class="o">/.</span><span class="n">dashcore</span><span class="o">/</span><span class="n">dashd</span><span class="o">.</span><span class="n">pid</span>
+<span class="n">TimeoutStartSec</span><span class="o">=</span><span class="mi">10</span><span class="n">m</span>
+<span class="n">ExecStop</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">dash</span><span class="o">-</span><span class="n">cli</span> <span class="n">stop</span>
+<span class="n">TimeoutStopSec</span><span class="o">=</span><span class="mi">120</span>
+<span class="n">Restart</span><span class="o">=</span><span class="n">on</span><span class="o">-</span><span class="n">failure</span>
+<span class="n">RestartSec</span><span class="o">=</span><span class="mi">120</span>
+<span class="n">StartLimitInterval</span><span class="o">=</span><span class="mi">300</span>
+<span class="n">StartLimitBurst</span><span class="o">=</span><span class="mi">3</span>
+
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+</li>
+<li><p>Register and start the daemon with systemd:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">daemon</span><span class="o">-</span><span class="n">reload</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">dashd</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">dashd</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Dash is now installed as a system daemon. View the status as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">status</span> <span class="n">dashd</span>
+</pre></div>
+</div>
+<p>View logs as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">journalctl</span> <span class="o">-</span><span class="n">u</span> <span class="n">dashd</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tor">
+<h2>Tor<a class="headerlink" href="#tor" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.torproject.org/">Tor</a> is free and open-source software
+for enabling anonymous communication. The name derived from the acronym
+for the original software project name “The Onion Router”. Tor directs
+Internet traffic through a free, worldwide, volunteer overlay network
+consisting of more than seven thousand relays to conceal a user’s
+location and usage from anyone conducting network surveillance or
+traffic analysis.</p>
+<div class="section" id="dash-core-gui">
+<h3>Dash Core GUI<a class="headerlink" href="#dash-core-gui" title="Permalink to this headline">¶</a></h3>
+<p>Dash Core traffic can be directed to pass through Tor by specifying a
+running Tor service as a proxy. First install Tor by visiting
+<a class="reference external" href="https://www.torproject.org/download/">https://www.torproject.org/download/</a> and downloading the appropriate Tor
+Browser bundle for your system. Set up the Tor browser by following the
+documentation on <a class="reference external" href="https://tb-manual.torproject.org/installation/">Installation</a> and <a class="reference external" href="https://tb-manual.torproject.org/running-tor-browser/">Running Tor
+Browser for the First Time</a>.</p>
+<p>Once Tor Browser is running, you have two options to configure Dash Core
+to use Tor for network traffic.</p>
+<ol class="arabic simple">
+<li><p><strong>Using the GUI:</strong> Start Dash Core and go to <strong>Settings &gt; Options &gt;
+Network</strong> and enable the <strong>Connect through SOCKS5 proxy</strong> setting.
+Specify <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> for the <strong>Proxy IP</strong> and <code class="docutils literal notranslate"><span class="pre">9150</span></code> for the
+<strong>Port</strong>. Click <strong>OK</strong> and restart Dash Core.</p></li>
+<li><p><strong>Using dash.conf:</strong> Ensure Dash Core is not running and edit
+your <code class="docutils literal notranslate"><span class="pre">dash.conf</span></code> settings file. Add the line
+<code class="docutils literal notranslate"><span class="pre">proxy=127.0.0.1:9150</span></code>, save the file and start Dash Core.</p></li>
+</ol>
+<p>You are now connected through the Tor network. You will need to remember
+to start the Tor Browser each time before you start Dash Core or you will
+not be able to sync.</p>
+</div>
+<div class="section" id="tor-onion-service">
+<h3>Tor onion service<a class="headerlink" href="#tor-onion-service" title="Permalink to this headline">¶</a></h3>
+<p>Tor onion services allows other users to connect to your Dash node using
+an onion address, providing further anonymity by concealing your IP
+address. Follow these steps to set up an onion service under Ubuntu
+Linux:</p>
+<ol class="arabic">
+<li><p>Install tor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">tor</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add the following line to the <code class="docutils literal notranslate"><span class="pre">torrc</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;echo -e &#39;ControlPort 9051</span><span class="se">\n</span><span class="s2">CookieAuthentication 1</span><span class="se">\n</span><span class="s2">CookieAuthFileGroupReadable 1&#39; &gt;&gt; /etc/tor/torrc&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Restart Tor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">tor</span>
+</pre></div>
+</div>
+</li>
+<li><p>Determine the group Tor is running under (usually the last entry in
+your groups file):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">group</span>
+</pre></div>
+</div>
+<p>The group is usually <code class="docutils literal notranslate"><span class="pre">debian-tor</span></code> under Debian-based Linux
+distributions.</p>
+</li>
+<li><p>Add the user running Dash to the Tor group:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">debian</span><span class="o">-</span><span class="n">tor</span> <span class="n">dash</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add the following two lines to <code class="docutils literal notranslate"><span class="pre">dash.conf</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proxy</span><span class="o">=</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">9050</span>
+<span class="n">torcontrol</span><span class="o">=</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">9051</span>
+</pre></div>
+</div>
+</li>
+<li><p>Restart Dash and monitor <code class="docutils literal notranslate"><span class="pre">debug.log</span></code> for onion informatoin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">onion</span> <span class="o">~/.</span><span class="n">dashcore</span><span class="o">/</span><span class="n">debug</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+<p>You should see a line similar to the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2020</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">29</span> <span class="mi">03</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">57</span> <span class="n">tor</span><span class="p">:</span> <span class="n">Got</span> <span class="n">service</span> <span class="n">ID</span> <span class="n">knup3fvr6fyvypu7</span><span class="p">,</span> <span class="n">advertising</span> <span class="n">service</span> <span class="n">knup3fvr6fyvypu7</span><span class="o">.</span><span class="n">onion</span><span class="p">:</span><span class="mi">19999</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Your onion service is now available at the shown address.</p>
+</div>
+</div>
+<div class="section" id="multiple-wallets">
+<h2>Multiple wallets<a class="headerlink" href="#multiple-wallets" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to select between different Dash wallets when starting
+Dash Core by specifying the <code class="docutils literal notranslate"><span class="pre">wallet</span></code> argument, or even run multiple
+instances of Dash Core simultaneously by specifying separate data
+directories using the <code class="docutils literal notranslate"><span class="pre">datadir</span></code> argument.</p>
+<p>To begin, install the Dash Core wallet for your system according to the
+<a class="reference internal" href="installation.html#dashcore-installation"><span class="std std-ref">installation instructions</span></a>. When you get
+to the step <strong>Running Dash Core for the first time</strong>, you can decide
+whether you want to maintain separate <code class="docutils literal notranslate"><span class="pre">wallet.dat</span></code> files in the
+default location (simpler if you do not need to run the wallets
+simultaneously), or specify entirely separate data directories such as
+e.g. <code class="docutils literal notranslate"><span class="pre">C:\Dash1</span></code> (simpler if you do want to run the wallets
+simultaneously).</p>
+<div class="section" id="separate-wallet-dat-files">
+<h3>Separate wallet.dat files<a class="headerlink" href="#separate-wallet-dat-files" title="Permalink to this headline">¶</a></h3>
+<p>For this scenario, we will create two shortcuts on the desktop, each
+using a different wallet file. Navigate to the binary file used to start
+Dash Core (typically locatd at <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\DashCore\dash-qt.exe</span></code>
+or similar) and create two shortcuts on the desktop. Then open the
+<strong>Properties</strong> window for each of these shortcuts.</p>
+<div class="figure align-default" id="id4">
+<a class="reference internal image-reference" href="../../_images/shortcuts.png"><img alt="../../_images/shortcuts.png" src="../../_images/shortcuts.png" style="height: 250px;" /></a>
+<p class="caption"><span class="caption-text">Creating desktop shortcuts using Windows 10</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>Modify the <strong>Target</strong> property of each shortcut to point to a different
+wallet file by specifying the <code class="docutils literal notranslate"><span class="pre">wallet</span></code> argument when starting the
+wallet. If you do not specify a <code class="docutils literal notranslate"><span class="pre">wallet</span></code> argument, <code class="docutils literal notranslate"><span class="pre">wallet.dat</span></code> will
+be used by default. The specified wallet file will be created if it does
+not exist. The following example demonstrates two wallets named
+<code class="docutils literal notranslate"><span class="pre">workwallet.dat</span></code> and <code class="docutils literal notranslate"><span class="pre">homewallet.dat</span></code>:</p>
+<ul class="simple">
+<li><p>Wallet Target 1: <code class="docutils literal notranslate"><span class="pre">&quot;C:\Program</span> <span class="pre">Files\DashCore\dash-qt.exe&quot;</span> <span class="pre">-wallet=workwallet.dat</span></code></p></li>
+<li><p>Wallet Target 2: <code class="docutils literal notranslate"><span class="pre">&quot;C:\Program</span> <span class="pre">Files\DashCore\dash-qt.exe&quot;</span> <span class="pre">-wallet=homewallet.dat</span></code></p></li>
+</ul>
+<div class="figure align-default" id="id5">
+<a class="reference internal image-reference" href="../../_images/walletfiles.png"><img alt="../../_images/walletfiles.png" src="../../_images/walletfiles.png" style="height: 250px;" /></a>
+<p class="caption"><span class="caption-text">Specifying separate wallet files</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>You can now use the two icons to quickly and easily open different
+wallets from your desktop. Note that you cannot open both wallets
+simultaneously. To do this, you will need two separate data directories,
+as described below.</p>
+</div>
+<div class="section" id="separate-data-directories">
+<h3>Separate data directories<a class="headerlink" href="#separate-data-directories" title="Permalink to this headline">¶</a></h3>
+<p>Start Dash Core and allow it to synchronize with the network, then close
+Dash Core again. You can now create two directories at e.g. <code class="docutils literal notranslate"><span class="pre">C:\Dash1</span></code>
+and <code class="docutils literal notranslate"><span class="pre">C:\Dash2</span></code> and copy the <code class="docutils literal notranslate"><span class="pre">blocks</span></code> and <code class="docutils literal notranslate"><span class="pre">chainstate</span></code> directories
+from the synchronized data directory into the new directories. Each of
+these will serve as a separate data directory, allowing you to run two
+instances of Dash Core simultaneously. Create two (or more) shortcuts on
+your desktop as described above, then specify arguments for <code class="docutils literal notranslate"><span class="pre">datadir</span></code>
+as shown below:</p>
+<ul class="simple">
+<li><p>Datadir Target 1: <code class="docutils literal notranslate"><span class="pre">&quot;C:\Program</span> <span class="pre">Files\DashCore\dash-qt.exe&quot;</span> <span class="pre">-datadir=C:\Dash1</span> <span class="pre">-listen=0</span></code></p></li>
+<li><p>Datadir Target 2: <code class="docutils literal notranslate"><span class="pre">&quot;C:\Program</span> <span class="pre">Files\DashCore\dash-qt.exe&quot;</span> <span class="pre">-datadir=C:\Dash2</span> <span class="pre">-listen=0</span></code></p></li>
+</ul>
+<div class="figure align-default" id="id6">
+<a class="reference internal image-reference" href="../../_images/datadirs.png"><img alt="../../_images/datadirs.png" src="../../_images/datadirs.png" style="height: 250px;" /></a>
+<p class="caption"><span class="caption-text">Specifying separate datadirs</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>You can now use the two icons to quickly and easily open different
+wallets simultaneously from your desktop. Both wallets maintain separate
+and full copies of the blockchain, which may use a lot of drive space.
+For more efficient use of drive space, consider using an SPV or “light”
+wallet such as <a class="reference internal" href="../index.html#dash-electrum-wallet"><span class="std std-ref">Dash Electrum</span></a> to maintain
+multiple separate wallets without keeping a full copy of the blockchain.</p>
+<div class="figure align-default" id="id7">
+<a class="reference internal image-reference" href="../../_images/2wallets.png"><img alt="../../_images/2wallets.png" src="../../_images/2wallets.png" style="height: 250px;" /></a>
+<p class="caption"><span class="caption-text">Two instances of Dash Core running simultaneously</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="keepass">
+<h2>KeePass<a class="headerlink" href="#keepass" title="Permalink to this headline">¶</a></h2>
+<p>Since version 0.11.0, Dash Core has supported integration with KeePass,
+the popular open source password manager. This guide describes how to
+configure the association between Dash Core and KeePass, and how to save
+a Dash Core wallet passphrase in KeePass using the integration. When
+this is done, KeePass can be used to unlock the wallet.</p>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>You will need the following:</p>
+<ul class="simple">
+<li><p>KeePass 2: <a class="reference external" href="https://keepass.info">https://keepass.info</a></p></li>
+<li><p>KeePassHttp plugin: <a class="reference external" href="https://github.com/pfn/keepasshttp">https://github.com/pfn/keepasshttp</a></p></li>
+<li><p>Dash Core: <a class="reference external" href="https://www.dash.org">https://www.dash.org</a></p></li>
+</ul>
+<p>If not already installed, install these packages according to the
+instructions linked below:</p>
+<ul class="simple">
+<li><p>KeePass: <a class="reference external" href="https://keepass.info/help/v2/setup.html">https://keepass.info/help/v2/setup.html</a></p></li>
+<li><p>KeePassHttp: <a class="reference external" href="https://github.com/pfn/keepasshttp/blob/master/README.md">https://github.com/pfn/keepasshttp/blob/master/README.md</a></p></li>
+<li><p>Dash Core: <a class="reference external" href="https://docs.dash.org/en/stable/wallets/dashcore/installation.html">https://docs.dash.org/en/stable/wallets/dashcore/installation.html</a></p></li>
+</ul>
+</div>
+<div class="section" id="commands">
+<h3>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+<p>The following KeePass RPC commands are available in the Dash Core client
+console or server:</p>
+<dl class="simple">
+<dt>keepass genkey</dt><dd><p>Generates a base64 encoded 256 bit AES key that can be used for
+communication with KeePassHttp. This is only necessary for manual
+configuration. Use init for automatic configuration.</p>
+</dd>
+<dt>keepass init</dt><dd><p>Sets up the association between Dash and KeePass by generating an AES
+key and sending an association message to KeePassHttp. This will
+trigger KeePass to ask for an ID for the association. Returns the
+association and the base64 encoded string for the AES key.</p>
+</dd>
+<dt>keepass setpassphrase</dt><dd><p>Updates the passphrase in KeePassHttp to a new value. This should
+match the passphrase you intend to use for the wallet. Please note
+that the standard RPC commands walletpassphrasechange and the wallet
+encryption from the QT GUI already send the updates to KeePassHttp, so
+this is only necessary for manual manipulation of the password.</p>
+</dd>
+</dl>
+<p>The following new arguments are available for dashd and dash-qt:</p>
+<dl class="simple">
+<dt>keepass</dt><dd><p>Use KeePass 2 integration using KeePassHttp plugin (default: 0)</p>
+</dd>
+<dt>keepassport=&lt;port&gt;</dt><dd><p>Connect to KeePassHttp on port &lt;port&gt; (default: 19455)</p>
+</dd>
+<dt>keepasskey=&lt;key&gt;</dt><dd><p>KeePassHttp key for AES encrypted communication with KeePass</p>
+</dd>
+<dt>keepassid=&lt;name&gt;</dt><dd><p>KeePassHttp id for the established association</p>
+</dd>
+<dt>keepassname=&lt;name&gt;</dt><dd><p>Name to construct url for KeePass entry that stores the wallet
+passphrase</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../electrum/installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cmd-rpc.html" class="btn btn-neutral float-left" title="Arguments and commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Dash Core Group, Inc
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
